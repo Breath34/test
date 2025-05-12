@@ -1,57 +1,15 @@
-name: Run Minecraft Server with Rclone Google Drive Mount
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+name: Start Minecraft Server
+on: push
 
 jobs:
-  minecraft-server:
+  start-server:
     runs-on: ubuntu-latest
     steps:
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y rclone fuse openjdk-17-jre-headless
-
-    - name: Configure rclone
-      env:
-        RCLONE_CONFIG_GDRIVE_TYPE: drive
-        RCLONE_CONFIG_GDRIVE_SCOPE: drive
-        RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
-        # Add other rclone config environment variables if needed, e.g. client_id, client_secret
-      run: |
-        mkdir -p ~/.config/rclone
-        cat > ~/.config/rclone/rclone.conf <<EOF
-[gdrive]
-type = ${RCLONE_CONFIG_GDRIVE_TYPE}
-scope = ${RCLONE_CONFIG_GDRIVE_SCOPE}
-token = ${RCLONE_CONFIG_GDRIVE_TOKEN}
-EOF
-
-    - name: Create mount point directory
-      run: mkdir -p ~/gdrive
-
-    - name: Mount Google Drive with rclone
-      run: |
-        nohup rclone mount gdrive: ~/gdrive --vfs-cache-mode writes --allow-other &
-        sleep 10  # wait for mount to be ready
-
-    - name: Download Minecraft Server jar if not present
-      run: |
-        if [ ! -f ~/gdrive/minecraft_server.jar ]; then
-          wget -O ~/gdrive/minecraft_server.jar https://launcher.mojang.com/v1/objects/your_version/minecraft_server.jar
-        fi
-
-    - name: Run Minecraft Server
-      run: |
-        cd ~/gdrive
-        java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui
-      # Note: This will run the server, but GitHub Actions jobs have a max runtime (~6 hours).
-      # You may want to run the server in detached mode or for a limited time.
-
-    - name: Unmount Google Drive
-      if: always()
-      run: |
-        fusermount -u ~/gdrive || umount ~/gdrive
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        
+      - name: Make start.sh executable
+        run: chmod +x start.sh
+        
+      - name: Run start.sh
+        run: ./start.sh
