@@ -1,16 +1,10 @@
-name: Minecraft Server with Playit and 5-min Push
+name: Minecraft Server Continuous Push with Java 21 (Every 5 Minutes)
 
 on:
-  push:
-    branches: [ "playit-only" ]
-  pull_request:
-    branches: [ "playit-only" ]
-  workflow_dispatch:
-  schedule:
-    - cron: '*/5 * * * *'  # every 5 minutes (optional, can trigger workflow regularly)
+  workflow_dispatch:  # Manual trigger
 
 jobs:
-  run-server-playit:
+  run-server-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +12,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-        token: ${{ secrets.FINE_GRAINED_PAT }}
+        token: ${{ secrets.PAT_TOKEN }}
 
     - name: Set up Java 21
       uses: actions/setup-java@v4
@@ -29,110 +23,51 @@ jobs:
     - name: Verify Java version
       run: java -version
 
-    - name: Prepare and run Minecraft server with Playit tunnel
-      env:
-        FINE_GRAINED_PAT: ${{ secrets.FINE_GRAINED_PAT }}
-        REPO: ${{ github.repository }}
-        PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-        GITHUB_RUN_ID: ${{ github.run_id }}
+    - name: Setup git user
       run: |
-        set -euo pipefail
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
 
+    - name: Run Minecraft server and push updates every 5 minutes
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      run: |
         chmod +x ./start.sh
-        chmod +x ./playit-linux-amd64
 
-        echo "$PLAYIT_SECRET" > playit.toml
-
-        # Start Minecraft server in background
+        # Start the Minecraft server in background
         ./start.sh &
+
         SERVER_PID=$!
+
         echo "Minecraft server started with PID $SERVER_PID"
 
-        # Start Playit tunnel in background
-        ./playit-linux-amd64 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
-        PLAYIT_PID=$!
-        echo "Playit tunnel started with PID $PLAYIT_PID"
-
-        # Configure git user locally
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git config user.name "github-actions[bot]"
-
-        commit_and_push() {
-          git add -A
-
-          # Exclude sensitive or volatile files from commit
-          git reset -- playit.toml
-          git reset -- playit.log
-          git reset -- tunnel-config.yml
-          git reset -- credentials.json
-          git reset -- logs/
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            return 1
-          fi
-
-          git commit -m "Auto-update Minecraft server data and Playit state [skip ci]"
-          for i in {1..3}; do
-            if git push https://x-access-token:${FINE_GRAINED_PAT}@github.com/${REPO}.git HEAD:playit-only --force; then
-              echo "Push successful on attempt $i"
-              return 0
-            else
-              echo "Push failed on attempt $i, retrying after pull..."
-              git pull --rebase
-            fi
-          done
-
-          echo "Failed to push after 3 attempts"
-          return 1
-        }
-
-        restart_server_if_needed() {
-          if ! kill -0 $SERVER_PID 2>/dev/null; then
-            echo "Minecraft server stopped. Restarting..."
-            ./start.sh &
-            SERVER_PID=$!
-            echo "Minecraft server restarted with PID $SERVER_PID"
-          fi
-        }
-
-        restart_playit_if_needed() {
-          if ! kill -0 $PLAYIT_PID 2>/dev/null; then
-            echo "Playit tunnel stopped. Restarting..."
-            ./playit-linux-amd64 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
-            PLAYIT_PID=$!
-            echo "Playit tunnel restarted with PID $PLAYIT_PID"
-          fi
-        }
-
-        # Track start time to limit workflow duration (e.g. 5 hours = 18000 seconds)
-        START_TIME=$(date +%s)
-        MAX_RUNTIME=18000
-
-        while true; do
-          echo "Sleeping 300 seconds (5 minutes)..."
+        # Run loop for 6 iterations (30 minutes total), adjust as needed
+        for i in {1..6}
+        do
+          echo "Iteration $i: Waiting 300 seconds (5 minutes)..."
           sleep 300
 
-          echo "Attempting to commit and push changes..."
-          commit_and_push || echo "No changes or push failed, continuing..."
+          echo "Checking for changes to commit and push..."
 
-          restart_server_if_needed
-          restart_playit_if_needed
+          git add -A
 
-          CURRENT_TIME=$(date +%s)
-          ELAPSED=$((CURRENT_TIME - START_TIME))
+          # Only commit if there are changes
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update Minecraft server data at iteration $i"
+            echo "Committed changes."
 
-          if [ $ELAPSED -ge $MAX_RUNTIME ]; then
-            echo "Max runtime reached ($MAX_RUNTIME seconds). Exiting workflow."
+            # Push changes using PAT
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
 
-            # Optionally trigger a new workflow run to continue
-            curl -X POST -H "Authorization: token $FINE_GRAINED_PAT" \
-              -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/${REPO}/actions/workflows/minecraft-playit.yml/dispatches" \
-              -d '{"ref":"playit-only"}'
-            echo "Triggered a new workflow run."
+            echo "Pushed changes at iteration $i."
 
-            exit 0
+            # Log last commit info
+            echo "Last commit info:"
+            git log -1 --oneline
+          else
+            echo "No changes detected at iteration $i."
           fi
         done
+
+        echo "Stopping Minecraft server..."
+        kill $SERVER_PID
