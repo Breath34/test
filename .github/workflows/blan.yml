@@ -1,29 +1,64 @@
-name: Start Minecraft Server
+name: Minecraft Server Continuous Push
+
 on:
-  workflow_dispatch: # Allows manual execution
+  workflow_dispatch:  # Manual trigger
 
 jobs:
-  start-server:
+  run-server-and-push:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    - name: Checkout repository with PAT
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Set up Java 21
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin' # Use OpenJDK (Temurin)
-          java-version: '21'
+    - name: Setup git user
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
 
-      - name: Run Minecraft Server
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: java -Xms5120M -Xmx5120M --add-modules=jdk.incubator.vector -jar server.jar --nogui
+    - name: Run Minecraft server and push updates every minute
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      run: |
+        chmod +x ./start.sh
 
-      - name: Backup Server Data
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Auto-save server data"
-          git push https://${{ secrets.GH_PAT }}@github.com/Breath34/test.git
+        # Start the Minecraft server in background
+        ./start.sh &
+
+        SERVER_PID=$!
+
+        echo "Minecraft server started with PID $SERVER_PID"
+
+        # Run loop for 10 iterations (10 minutes), adjust as needed
+        for i in {1..10}
+        do
+          echo "Iteration $i: Waiting 60 seconds..."
+          sleep 60
+
+          echo "Checking for changes to commit and push..."
+
+          git add -A
+
+          # Only commit if there are changes
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update Minecraft server data at iteration $i"
+            echo "Committed changes."
+
+            # Push changes using PAT
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:main
+
+            echo "Pushed changes at iteration $i."
+
+            # Log last commit info
+            echo "Last commit info:"
+            git log -1 --oneline
+          else
+            echo "No changes detected at iteration $i."
+          fi
+        done
+
+        echo "Stopping Minecraft server..."
+        kill $SERVER_PID
