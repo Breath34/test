@@ -9,7 +9,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Run start.sh
+      - name: Set up Java 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # Use OpenJDK (Temurin)
+          java-version: '21'
+
+      - name: Run Minecraft Server
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: java -Xms5120M -Xmx5120M --add-modules=jdk.incubator.vector -jar server.jar --nogui
