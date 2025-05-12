@@ -12,7 +12,7 @@ jobs:
       - name: Run start.sh
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: ./start.sh
+        run: java -Xms5120M -Xmx5120M --add-modules=jdk.incubator.vector -jar server.jar --nogui
 
       - name: Backup Server Data
         run: |
