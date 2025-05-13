@@ -94,3 +94,44 @@
 [15:25:07] [Server thread/INFO]: _Claddy__ issued server command: /kos
 [15:30:02] [Server thread/INFO]: _Claddy__ issued server command: /gamemode creative
 [15:30:02] [Server thread/INFO]: [_Claddy__: Set own game mode to Creative Mode]
+[15:30:21] [Server thread/INFO]: _Claddy__ issued server command: /locate structure minecraft:village_plains
+[15:30:21] [Server thread/INFO]: Locating element minecraft:village_plains took 1 ms
+[15:30:23] [Server thread/INFO]: _Claddy__ issued server command: /tp @s -416 ~ 752
+[15:30:23] [Netty Epoll Server IO #2/WARN]: [ViaVersion] (1.21.2->1.21) Mixed combinations of relative and absolute delta movements are not supported for 1.21.1 players. This will result in incorrect movement for the player. 
+[15:30:23] [Server thread/INFO]: [_Claddy__: Teleported _Claddy__ to -415.500000, 102.871126, 752.500000]
+[15:30:28] [Server thread/INFO]: _Claddy__ issued server command: /tps
+[15:30:30] [Server thread/INFO]: _Claddy__ issued server command: /tps
+[15:30:33] [Server thread/INFO]: _Claddy__ issued server command: /gamemode survival
+[15:30:33] [Server thread/INFO]: [_Claddy__: Set own game mode to Survival Mode]
+[15:30:49] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
+[15:30:49] [Server thread/INFO]: _Claddy__ left the game
+[15:31:07] [User Authenticator #2/INFO]: UUID of player Vezmir is 716be07c-7282-4f1d-9346-823a20fc5fd0
+[15:31:11] [Server thread/INFO]: Vezmir joined the game
+[15:31:11] [Server thread/INFO]: Vezmir[/127.156.7.78:35747] logged in with entity id 9067 at ([world]73.5, 64.0, -282.5)
+[15:31:34] [Netty Epoll Server IO #3/WARN]: Failed to update secure chat state for Vezmir: 'Chat disabled due to missing profile public key. Please try reconnecting.'
+[15:31:38] [Async Chat Thread - #1/INFO]: <Vezmir> wsp
+[15:32:20] [Server thread/INFO]: _Claddy__ (/127.39.192.83:33681) lost connection: Disconnected
+[15:32:27] [User Authenticator #3/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
+[15:32:28] [Server thread/INFO]: _Claddy__ joined the game
+[15:32:28] [Server thread/INFO]: _Claddy__[/127.39.192.83:59785] logged in with entity id 9322 at ([world]-432.75003614428255, 63.0, 735.2223347909348)
+[15:32:34] [Netty Epoll Server IO #2/WARN]: Failed to update secure chat state for _Claddy__: 'Chat disabled due to missing profile public key. Please try reconnecting.'
+[15:32:37] [Async Chat Thread - #1/INFO]: <_Claddy__> ?
+[15:32:48] [Server thread/INFO]: _Claddy__ issued server command: /tp Vezmir _Claddy__
+[15:32:48] [Server thread/INFO]: [_Claddy__: Teleported Vezmir to _Claddy__]
+[15:33:25] [Async Chat Thread - #1/INFO]: <_Claddy__> hi
+[15:33:30] [Async Chat Thread - #1/INFO]: <Vezmir> hlo
+[15:33:35] [Async Chat Thread - #1/INFO]: <Vezmir> hwt ya doin
+[15:33:37] [Server thread/INFO]: _Claddy__ has made the advancement [Stone Age]
+[15:33:44] [Async Chat Thread - #1/INFO]: <_Claddy__> good you?
+[15:33:54] [Async Chat Thread - #1/INFO]: <Vezmir> this is not claddy is it
+[15:34:01] [Async Chat Thread - #1/INFO]: <_Claddy__> wdym?
+[15:34:07] [Server thread/INFO]: _Claddy__ has made the advancement [Getting an Upgrade]
+[15:34:08] [Async Chat Thread - #1/INFO]: <Vezmir> ok who are you
+[15:34:15] [Async Chat Thread - #1/INFO]: <_Claddy__> nigga
+[15:34:20] [Async Chat Thread - #1/INFO]: <_Claddy__> nigga man
+[15:34:25] [Async Chat Thread - #1/INFO]: <Vezmir> oh hes back
+[15:34:27] [Server thread/INFO]: Vezmir has made the advancement [Stone Age]
+[15:34:37] [Async Chat Thread - #1/INFO]: <_Claddy__> fym
+[15:34:40] [Async Chat Thread - #1/INFO]: <_Claddy__> hes back
+[15:34:45] [Server thread/INFO]: Vezmir has made the advancement [Getting an Upgrade]
+[15:35:01] [Async Chat Thread - #1/INFO]: <Vezmir> shadow says he wanna play a modpack
