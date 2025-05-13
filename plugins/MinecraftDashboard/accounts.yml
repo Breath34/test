@@ -1,1 +1,2 @@
-accounts: []
+accounts:
+  CONSOLE: $2a$10$XduTkD4GLOiZfE4eCPlhDOT5x4boG5TXScdwxrDR3jhyOiuvv40TC
