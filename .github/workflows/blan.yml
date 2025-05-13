@@ -28,6 +28,11 @@ jobs:
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
 
+    - name: Start playit.gg tunnel
+      run: |
+        chmod +x ./playit-linux-amd64
+        nohup ./playit-linux-amd64 &  # Run playit.gg in the background
+
     - name: Run Minecraft server and push updates every 5 minutes
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
