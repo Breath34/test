@@ -82,3 +82,5 @@
 [15:13:48] [pool-14-thread-2/WARN]: Executing command "op @a"..
 [15:13:48] [Server thread/INFO]: Made _Claddy__ a server operator
 [15:13:52] [Server thread/INFO]: _Claddy__ issued server command: /tps
+[15:18:26] [Server thread/INFO]: _Claddy__ issued server command: /difficulty hard
+[15:18:26] [Server thread/INFO]: [_Claddy__: The difficulty has been set to Hard]
