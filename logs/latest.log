@@ -84,3 +84,9 @@
 [15:13:52] [Server thread/INFO]: _Claddy__ issued server command: /tps
 [15:18:26] [Server thread/INFO]: _Claddy__ issued server command: /difficulty hard
 [15:18:26] [Server thread/INFO]: [_Claddy__: The difficulty has been set to Hard]
+[15:20:50] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
+[15:20:50] [Server thread/INFO]: _Claddy__ left the game
+[15:22:42] [User Authenticator #1/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
+[15:22:43] [Server thread/INFO]: _Claddy__ joined the game
+[15:22:43] [Server thread/INFO]: _Claddy__[/127.39.192.83:34905] logged in with entity id 5066 at ([world]757.6786056925386, 64.0, 605.1861708720384)
+[15:24:31] [Server thread/INFO]: _Claddy__ issued server command: /tpsbar
