@@ -1,6 +1,84 @@
-[15:06:11] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 6.11.0-1013-azure (amd64)
-[15:06:11] [ServerMain/INFO]: [bootstrap] Loading Pufferfish 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) for Minecraft 1.21.3
-[15:06:11] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[15:06:12] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
-[15:06:12] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
+[15:10:06] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 6.11.0-1014-azure (amd64)
+[15:10:06] [ServerMain/INFO]: [bootstrap] Loading Pufferfish 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) for Minecraft 1.21.3
+[15:10:07] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[15:10:09] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
+[15:10:09] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
  - Kryptonite (2.0.1), MinecraftDashboard (1.1.7), ViaBackwards (5.3.3-SNAPSHOT), ViaVersion (5.3.3-SNAPSHOT)
+[15:10:13] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[15:10:16] [ServerMain/INFO]: Loaded 1337 recipes
+[15:10:16] [ServerMain/INFO]: Loaded 1448 advancements
+[15:10:16] [Server thread/INFO]: Starting minecraft server version 1.21.3
+[15:10:16] [Server thread/INFO]: Loading properties
+[15:10:16] [Server thread/INFO]: This server is running Pufferfish version 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) (Implementing API version 1.21.3-R0.1-SNAPSHOT)
+[15:10:17] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[15:10:17] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[15:10:17] [Server thread/INFO]: Using 4 threads for Netty based IO
+[15:10:18] [Server thread/INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[15:10:18] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using population gen parallelism: true
+[15:10:19] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[15:10:19] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[15:10:19] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[15:10:20] [Server thread/INFO]: Default game type: SURVIVAL
+[15:10:20] [Server thread/INFO]: Generating keypair
+[15:10:20] [Server thread/INFO]: Starting Minecraft server on *:25565
+[15:10:20] [Server thread/INFO]: Using epoll channel type
+[15:10:20] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[15:10:20] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[15:10:21] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.3-SNAPSHOT
+[15:10:21] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.3-SNAPSHOT is now loaded. Registering protocol transformers and injecting...
+[15:10:21] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
+[15:10:21] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
+[15:10:22] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[15:10:22] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[15:10:22] [Server thread/INFO]: [Kryptonite] Loading server plugin Kryptonite v2.0.1
+[15:10:22] [Server thread/INFO]: [MinecraftDashboard] Loading server plugin MinecraftDashboard v1.1.7
+[15:10:22] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.3-SNAPSHOT
+[15:10:22] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[15:10:22] [Server thread/INFO]: Preparing level "world"
+[15:10:23] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[15:10:23] [Paper Common Worker #0/INFO]: [MCTypeRegistry] Initialising converters for DataConverter...
+[15:10:23] [Paper Common Worker #0/INFO]: [MCTypeRegistry] Finished initialising converters for DataConverter in 302.4ms
+[15:10:23] [Server thread/INFO]: Preparing spawn area: 0%
+[15:10:23] [Server thread/INFO]: Preparing spawn area: 0%
+[15:10:24] [Server thread/INFO]: Preparing spawn area: 0%
+[15:10:24] [Server thread/INFO]: Time elapsed: 1239 ms
+[15:10:24] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[15:10:24] [Server thread/INFO]: Preparing spawn area: 0%
+[15:10:24] [Server thread/INFO]: Time elapsed: 207 ms
+[15:10:24] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[15:10:24] [Server thread/INFO]: Preparing spawn area: 0%
+[15:10:24] [Server thread/INFO]: Time elapsed: 107 ms
+[15:10:24] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.3-SNAPSHOT
+[15:10:24] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.21.2-1.21.3 (768)
+[15:10:24] [Server thread/INFO]: [Kryptonite] Enabling Kryptonite v2.0.1
+[15:10:24] [Server thread/INFO]: [Kryptonite] 
+[15:10:24] [Server thread/INFO]: [Kryptonite] █▄▀ █▀█ █▄█ █▀█ ▀█▀ █▀█ █▄ █ █ ▀█▀ █▀▀
+[15:10:24] [Server thread/INFO]: [Kryptonite] █ █ █▀▄  █  █▀▀  █  █▄█ █ ▀█ █  █  ██▄
+[15:10:24] [Server thread/INFO]: [Kryptonite] 
+[15:10:24] [Server thread/INFO]: [Kryptonite] Running Kryptonite version 2.0.1.
+[15:10:24] [Server thread/INFO]: [Kryptonite] Please report any issues with Kryptonite to our GitHub repository: https://github.com/lewmc/kryptonite/issues
+[15:10:24] [Server thread/INFO]: [Kryptonite] 
+[15:10:24] [Server thread/INFO]: [Kryptonite] Beginning startup...
+[15:10:24] [Server thread/INFO]: [Kryptonite] 
+[15:10:25] [Server thread/INFO]: [Kryptonite] You are running the latest version of Kryptonite.
+[15:10:25] [Server thread/INFO]: [Kryptonite] 
+[15:10:25] [Server thread/INFO]: [Kryptonite] Running server jar: Pufferfish version 1.21.3-R0.1-SNAPSHOT
+[15:10:25] [Server thread/INFO]: [Kryptonite] Supported configurations loaded: Server Properties, Bukkit, Spigot, Paper (World Defaults), Paper (Global), Pufferfish.
+[15:10:25] [Server thread/INFO]: [Kryptonite] 
+[15:10:25] [Server thread/INFO]: [Kryptonite] Startup completed.
+[15:10:25] [Server thread/INFO]: [MinecraftDashboard] Enabling MinecraftDashboard v1.1.7
+[15:10:26] [Server thread/INFO]: [org.reflections.Reflections] Reflections took 135 ms to scan 1 urls, producing 2 keys and 34 values
+[15:10:26] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.3-SNAPSHOT
+[15:10:26] [Server thread/INFO]: [spark] Starting background profiler...
+[15:10:28] [Server thread/INFO]: Done preparing level "world" (5.659s)
+[15:10:28] [Server thread/INFO]: Running delayed init tasks
+[15:10:28] [Server thread/INFO]: Done (29.767s)! For help, type "help"
+[15:10:28] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[15:10:28] [Server thread/INFO]: [ViaVersion] You are running a development version of the plugin, please report any bugs to GitHub.
+[15:10:35] [User Authenticator #0/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
+[15:10:37] [Server thread/INFO]: _Claddy__ joined the game
+[15:10:37] [Server thread/INFO]: _Claddy__[/127.39.192.83:53501] logged in with entity id 100 at ([world]62.700671195023375, 63.0, -309.08324309074163)
+[15:13:34] [Server thread/INFO]: _Claddy__ issued server command: /tps
+[15:13:48] [pool-14-thread-2/WARN]: Executing command "op @a"..
+[15:13:48] [Server thread/INFO]: Made _Claddy__ a server operator
+[15:13:52] [Server thread/INFO]: _Claddy__ issued server command: /tps
