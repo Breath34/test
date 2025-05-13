@@ -35,7 +35,7 @@ jobs:
         echo "Updating playit.toml with secret..."
         echo "$PLAYIT_SECRET" > playit.toml
         cat playit.toml  # Verify the contents
-        
+
     - name: Start playit.gg tunnel
       run: |
         chmod +x ./playit-linux-amd64
