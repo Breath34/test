@@ -28,6 +28,14 @@ jobs:
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
 
+    - name: Configure playit.toml
+      env:
+        PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
+      run: |
+        echo "Updating playit.toml with secret..."
+        echo "$PLAYIT_SECRET" > playit.toml
+        cat playit.toml  # Verify the contents
+        
     - name: Start playit.gg tunnel
       run: |
         chmod +x ./playit-linux-amd64
@@ -55,6 +63,9 @@ jobs:
           echo "Checking for changes to commit and push..."
 
           git add -A
+
+          # Prevent playit.toml from being committed
+          git reset -- playit.toml
 
           # Only commit if there are changes
           if ! git diff --cached --quiet; then
