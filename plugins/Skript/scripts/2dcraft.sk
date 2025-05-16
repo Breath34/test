@@ -50,7 +50,7 @@ on teleport:
 
     # If destination was corrected, update the event's target location
     if {_needs_destination_correction} is true:
-        set teleport location to {_corrected_destination}
+        event.setTo({_corrected_destination}) # Using skript-reflect
 
     # Always correct view after any (potentially modified) external teleport
     # Wait for the teleport to visually complete for the client before setting look
@@ -86,7 +86,16 @@ every {@correction_interval}:
 
             # Always check and correct view direction (yaw/pitch)
             # This handles cases where the player turns their head without moving, or after a corrective teleport
-            if {_current_yaw} is not {@fixed_yaw} or {_current_pitch} is not {@fixed_pitch}:
+            set {_f_yaw} to "{@fixed_yaw}" parsed as number
+            set {_f_pitch} to "{@fixed_pitch}" parsed as number
+            
+            set {_needs_look_correction} to false
+            if {_current_yaw} is not {_f_yaw}:
+                set {_needs_look_correction} to true
+            if {_current_pitch} is not {_f_pitch}:
+                set {_needs_look_correction} to true
+
+            if {_needs_look_correction} is true:
                 # Small delay to ensure this applies after any potential teleport
                 wait 1 tick 
                 if {_loop_player} is online:
