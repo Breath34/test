@@ -82,7 +82,7 @@ on damage:
     # push victim direction {_direction} speed {_knockback_strength}
     # A simpler way for now:
     push victim upwards with speed {_knockback_strength} / 2
-    push victim in direction from attacker to victim at speed {_knockback_strength}
+    push victim in direction {_direction} at speed {_knockback_strength}
 
     # Broadcast damage for debugging
     broadcast "&e%attacker% &7hit &c%victim%&7! Victim's damage: &c%{shonen.player.%victim%.damage}%%%&r"

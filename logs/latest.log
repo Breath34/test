@@ -344,3 +344,23 @@
 [18:41:35] [User Authenticator #3/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
 [18:41:37] [Server thread/INFO]: _Claddy__ joined the game
 [18:41:37] [Server thread/INFO]: _Claddy__[/127.122.251.136:53271] logged in with entity id 1242 at ([world]92.99570838214032, 64.7622796065446, 0.0)
+[18:41:52] [pool-15-thread-1/WARN]: Executing command "sk reload 2dcraft"..
+[18:41:52] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:41:52] [Server thread/INFO]: Line 85: (2dcraft.sk)
+[18:41:52] [Server thread/INFO]:     'in direction from attacker to victim at speed' is not an entity type
+[18:41:52] [Server thread/INFO]:     Line: push victim in direction from attacker to victim at speed {_knockback_strength}
+[18:41:52] [Server thread/INFO]:  
+[18:41:52] [Server thread/INFO]: [Shonen Smash] Script loaded!
+[18:41:52] [Server thread/INFO]:     Encountered 1 error while reloading 2dcraft.sk! (71ms)
+[18:42:35] [Server thread/INFO]: _Claddy__ issued server command: /ping
+[18:42:39] [Server thread/INFO]: _Claddy__ issued server command: /tps
+[18:44:53] [pool-15-thread-3/WARN]: Executing command "sk reload 2dcraft"..
+[18:44:53] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:44:53] [Server thread/INFO]: Line 85: (2dcraft.sk)
+[18:44:53] [Server thread/INFO]:     'in direction' is not an entity type
+[18:44:53] [Server thread/INFO]:     Line: push victim in direction {_direction} at speed {_knockback_strength}
+[18:44:53] [Server thread/INFO]:  
+[18:44:53] [Server thread/INFO]: [Shonen Smash] Script loaded!
+[18:44:53] [Server thread/INFO]:     Encountered 1 error while reloading 2dcraft.sk! (44ms)
+[18:45:12] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
+[18:45:12] [Server thread/INFO]: _Claddy__ left the game
