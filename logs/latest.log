@@ -170,3 +170,177 @@
 [18:35:50] [Server thread/INFO]: _Claddy__[/127.122.251.136:56877] logged in with entity id 773 at ([world]92.40962877396237, 65.35011494242428, 0.0)
 [18:36:00] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
 [18:36:00] [Server thread/INFO]: _Claddy__ left the game
+[18:37:18] [pool-15-thread-4/WARN]: Executing command "tps"..
+[18:37:18] [Server thread/INFO]: TPS from last 1m, 5m, 15m: 20.0, 20.0, 20.0
+[18:37:23] [pool-15-thread-1/WARN]: Executing command "sk reload 2dcraft"..
+[18:37:23] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:37:24] [Server thread/INFO]: Successfully reloaded 2dcraft.sk. (1557ms)
+[18:37:30] [User Authenticator #2/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
+[18:37:31] [Server thread/INFO]: _Claddy__ joined the game
+[18:37:31] [Server thread/INFO]: _Claddy__[/127.122.251.136:56985] logged in with entity id 925 at ([world]92.57998298171678, 65.35011494242428, 0.0)
+[18:37:31] [Server thread/INFO]: [DEBUG] On Join: Setting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:32] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:33] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:34] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:34] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:34] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:34] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:34] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:34] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:35] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:36] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:37] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:37] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:37] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:37] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:37] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:37] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:38] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:39] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:40] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:40] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:40] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:40] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:40] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:40] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:41] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:42] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:43] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:43] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:43] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:43] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:43] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:43] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:44] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:45] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:46] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:46] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:46] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:46] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:46] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:46] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:47] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:48] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:49] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:49] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:49] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:49] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:49] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:49] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:50] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: [DEBUG] Periodic: Correcting _Claddy__ yaw to 90, pitch to 0
+[18:37:51] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
+[18:37:51] [Server thread/INFO]: _Claddy__ left the game
+[18:39:38] [pool-15-thread-2/WARN]: Executing command "sk reload 2dcraft"..
+[18:39:38] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:39:39] [Server thread/INFO]: Successfully reloaded 2dcraft.sk. (1499ms)
+[18:40:25] [pool-15-thread-2/WARN]: Executing command "sk reload 2dcraft"..
+[18:40:25] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:40:25] [Server thread/INFO]: Line 65: (2dcraft.sk)
+[18:40:25] [Server thread/INFO]:     Invalid amount or placement of brackets. Please make sure that each opening bracket has a corresponding closing bracket.
+[18:40:25] [Server thread/INFO]:     Line: send action bar "&c&l%{shonen.player.%victim%.damage}%%" to victim
+[18:40:25] [Server thread/INFO]:  
+[18:40:25] [Server thread/INFO]: Line 85: (2dcraft.sk)
+[18:40:25] [Server thread/INFO]:     'horizontally away from attacker with speed' is not an entity type
+[18:40:25] [Server thread/INFO]:     Line: push victim horizontally away from attacker with speed {_knockback_strength}
+[18:40:25] [Server thread/INFO]:  
+[18:40:25] [Server thread/INFO]: Line 88: (2dcraft.sk)
+[18:40:25] [Server thread/INFO]:     Invalid amount or placement of brackets. Please make sure that each opening bracket has a corresponding closing bracket.
+[18:40:25] [Server thread/INFO]:     Line: broadcast "&e%attacker% &7hit &c%victim%&7! Victim's damage: &c%{shonen.player.%victim%.damage}%%"
+[18:40:25] [Server thread/INFO]:  
+[18:40:25] [Server thread/INFO]: [Shonen Smash] Script loaded!
+[18:40:25] [Server thread/INFO]:     Encountered 3 errors while reloading 2dcraft.sk! (116ms)
+[18:41:12] [pool-15-thread-4/WARN]: Executing command "sk reload 2dcraft"..
+[18:41:12] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:41:12] [Server thread/INFO]: Line 85: (2dcraft.sk)
+[18:41:12] [Server thread/INFO]:     'away from attacker with speed' is not an entity type
+[18:41:12] [Server thread/INFO]:     Line: push victim away from attacker with speed {_knockback_strength}
+[18:41:12] [Server thread/INFO]:  
+[18:41:12] [Server thread/INFO]: [Shonen Smash] Script loaded!
+[18:41:12] [Server thread/INFO]:     Encountered 1 error while reloading 2dcraft.sk! (41ms)
+[18:41:35] [User Authenticator #3/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
+[18:41:37] [Server thread/INFO]: _Claddy__ joined the game
+[18:41:37] [Server thread/INFO]: _Claddy__[/127.122.251.136:53271] logged in with entity id 1242 at ([world]92.99570838214032, 64.7622796065446, 0.0)

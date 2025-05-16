@@ -1,103 +1,100 @@
+command /shonenadmin:
+    trigger:
+        # Admin commands will go here
+        send "Shonen Smash Admin Panel" to player
+
+on load:
+    send "[Shonen Smash] Script loaded!" to console
+
+# Basic character and ability structure (to be expanded)
+# Example:
+# define character "Naruto":
+#     ability 1: "Rasengan"
+#     ability 2: "Shadow Clone Jutsu"
+
+# Game states
+# - Lobby
+# - Character Selection
+# - In-Game
+# - Post-Game
+
+# Player data (will likely use Skript variables or SkBee NBT)
+# - Chosen character
+# - Stocks/Lives
+# - Damage percentage
+
+# Arena management
+
 options:
-    fixed_z_coordinate: 0
-    fixed_yaw: 90 # Player faces positive X-axis (can be changed to -90 for other direction)
-    fixed_pitch: 0 # Horizontal view
-    correction_interval: 3 ticks # How often to check and correct position/rotation (lower is more resource intensive but smoother)
+    default_stocks: 3
+    max_damage_for_knockback_scaling: 200 # Percentage at which knockback scaling maxes out
+    base_knockback_strength: 0.5
+    knockback_scaling_factor: 0.015
 
-# --- Variables ---
-# {2d_internal_teleport::%player%} is a flag to prevent teleport event loops.
-# It's set to true before an internal correction teleport and cleared by the 'on teleport' event.
+# Core gameplay loops
+# - Attack handling
+# - Ability activation
+# - Damage calculation
+# - Knockback
+# - Stock deduction
+# - Win/Loss conditions
 
-# --- Event Handlers ---
+# SkBee and Skript-Reflect will be used for more advanced features like:
+# - Custom particle effects (SkBee)
+# - Complex inventory GUIs (SkBee)
+# - Accessing Bukkit/Spigot API for fine-grained control (Skript-Reflect)
+# - Custom sound effects (SkBee)
 
-# On Join: Set initial position and view
+# Let's start with a simple join message
 on join:
-    set {_player} to player
-    # Clear any potentially lingering flag (e.g., from server crash)
-    delete {2d_internal_teleport::%{_player}%}
+    send title "&6Welcome to &cShonen Smash!" to player for 3 seconds
+    send subtitle "&ePrepare for battle!" to player for 3 seconds
+    set {shonen.player.%player%.stocks} to {@default_stocks}
+    set {shonen.player.%player%.damage} to 0
 
-    set {2d_internal_teleport::%{_player}%} to true # Mark upcoming teleport as internal
-    teleport {_player} to location(x-coordinate of {_player}, y-coordinate of {_player}, {@fixed_z_coordinate}, world of {_player})
-    
-    # Wait for teleport to fully process before setting look direction
-    wait 1 tick 
-    if {_player} is online: # Ensure player is still online
-        set {_player}'s yaw to {@fixed_yaw}
-        set {_player}'s pitch to {@fixed_pitch}
-    # The 'on teleport' event will clear the {2d_internal_teleport::%{_player}%} flag.
+# Combat System
+on damage:
+    attacker is a player
+    victim is a player
+    # Prevent default damage, we'll handle it manually
+    cancel event
 
-# On Quit: Clean up player-specific variables
-on quit:
-    delete {2d_internal_teleport::%{player}%}
+    # Add damage percentage
+    # For now, every hit adds 10%
+    add 10 to {shonen.player.%victim%.damage}
+    send action bar "&c&l%{shonen.player.%victim%.damage}%%%&r" to victim
 
-# On Teleport: Correct Z-coordinate and view if not an internal correction teleport
-on teleport:
-    set {_player} to player
-    # If this teleport was initiated by this script for correction, clear flag and stop
-    if {2d_internal_teleport::%{_player}%} is set:
-        delete {2d_internal_teleport::%{_player}%} 
-        stop 
+    # Knockback
+    # Calculate knockback strength based on damage percentage
+    set {_victim_damage} to {shonen.player.%victim%.damage}
+    if {_victim_damage} > {@max_damage_for_knockback_scaling}:
+        set {_victim_damage} to {@max_damage_for_knockback_scaling}
 
-    # This is an external teleport (e.g., command, ender pearl)
-    set {_destination} to event-location # 'event-location' is the destination in the teleport event
-    set {_corrected_destination} to {_destination}
-    set {_needs_destination_correction} to false
+    set {_knockback_strength} to {@base_knockback_strength} + ({_victim_damage} * {@knockback_scaling_factor})
 
-    # If the destination Z-coordinate is not the fixed one, prepare to correct it
-    if z-coordinate of {_destination} is not {@fixed_z_coordinate}:
-        set {_corrected_destination} to location(x-coordinate of {_destination}, y-coordinate of {_destination}, {@fixed_z_coordinate}, world of {_destination})
-        set {_needs_destination_correction} to true
+    # Apply knockback
+    # Simple knockback away from attacker, with some upward force
+    set {_direction} to vector from attacker to victim
+    # Normalize and apply strength (Skript might not have vector normalization directly, so this is a simplified approach)
+    # We are pushing the victim away from the attacker
+    # Skript's default push direction is often sufficient if we just set speed
+    # For more precise vector math, Skript-Reflect would be needed.
+    # push victim direction {_direction} speed {_knockback_strength}
+    # A simpler way for now:
+    push victim upwards with speed {_knockback_strength} / 2
+    push victim in direction from attacker to victim at speed {_knockback_strength}
 
-    # If destination was corrected, update the event's target location
-    if {_needs_destination_correction} is true:
-        event.setTo({_corrected_destination}) # Using skript-reflect
+    # Broadcast damage for debugging
+    broadcast "&e%attacker% &7hit &c%victim%&7! Victim's damage: &c%{shonen.player.%victim%.damage}%%%&r"
 
-    # Always correct view after any (potentially modified) external teleport
-    # Wait for the teleport to visually complete for the client before setting look
-    wait 2 ticks 
-    if {_player} is online: # Ensure player is still online
-        set {_player}'s yaw to {@fixed_yaw}
-        set {_player}'s pitch to {@fixed_pitch}
+# TODO:
+# - Stock deduction when falling out of bounds / Y-level check
+# - Respawn mechanic
+# - Arena definition and boundary checks
+# - Different attacks/abilities with varying damage/knockback
 
-# Periodic Check: Enforce Z-coordinate and view for movement drifts and look changes
-every {@correction_interval}:
-    loop all players:
-        set {_loop_player} to loop-player
-        if {_loop_player} is online: # Process only online players
-            set {_current_loc} to location of {_loop_player}
-            set {_current_yaw} to yaw of {_loop_player}
-            set {_current_pitch} to pitch of {_loop_player}
-
-            set {_needs_pos_correction} to false
-            set {_new_x} to x-coordinate of {_current_loc}
-            set {_new_y} to y-coordinate of {_current_loc}
-            set {_new_z} to z-coordinate of {_current_loc}
-
-            # Check if Z-coordinate needs correction
-            if {_new_z} is not {@fixed_z_coordinate}:
-                set {_new_z} to {@fixed_z_coordinate}
-                set {_needs_pos_correction} to true
-
-            # If position needs correction, perform an internal teleport
-            if {_needs_pos_correction} is true:
-                set {2d_internal_teleport::%{_loop_player}%} to true # Mark as internal
-                teleport {_loop_player} to location({_new_x}, {_new_y}, {_new_z}, world of {_loop_player})
-                # The 'on teleport' event handles clearing the flag. Player look is corrected next.
-
-            # Always check and correct view direction (yaw/pitch)
-            # This handles cases where the player turns their head without moving, or after a corrective teleport
-            set {_f_yaw} to "{@fixed_yaw}" parsed as number
-            set {_f_pitch} to "{@fixed_pitch}" parsed as number
-            
-            set {_needs_look_correction} to false
-            if {_current_yaw} is not {_f_yaw}:
-                set {_needs_look_correction} to true
-            if {_current_pitch} is not {_f_pitch}:
-                set {_needs_look_correction} to true
-
-            if {_needs_look_correction} is true:
-                # Small delay to ensure this applies after any potential teleport
-                wait 1 tick 
-                if {_loop_player} is online:
-                    set {_loop_player}'s yaw to {@fixed_yaw}
-                    set {_loop_player}'s pitch to {@fixed_pitch} 
+# TODO:
+# - Stock deduction when falling out of bounds / Y-level check
+# - Respawn mechanic
+# - Arena definition and boundary checks
+# - Different attacks/abilities with varying damage/knockback 
