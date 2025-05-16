@@ -1,156 +1,216 @@
-[15:10:06] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 6.11.0-1014-azure (amd64)
-[15:10:06] [ServerMain/INFO]: [bootstrap] Loading Pufferfish 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) for Minecraft 1.21.3
-[15:10:07] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[15:10:09] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
-[15:10:09] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
- - Kryptonite (2.0.1), MinecraftDashboard (1.1.7), ViaBackwards (5.3.3-SNAPSHOT), ViaVersion (5.3.3-SNAPSHOT)
-[15:10:13] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[15:10:16] [ServerMain/INFO]: Loaded 1337 recipes
-[15:10:16] [ServerMain/INFO]: Loaded 1448 advancements
-[15:10:16] [Server thread/INFO]: Starting minecraft server version 1.21.3
-[15:10:16] [Server thread/INFO]: Loading properties
-[15:10:16] [Server thread/INFO]: This server is running Pufferfish version 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) (Implementing API version 1.21.3-R0.1-SNAPSHOT)
-[15:10:17] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[15:10:17] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[15:10:17] [Server thread/INFO]: Using 4 threads for Netty based IO
-[15:10:18] [Server thread/INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[15:10:18] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using population gen parallelism: true
-[15:10:19] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
-[15:10:19] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
-[15:10:19] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
-[15:10:20] [Server thread/INFO]: Default game type: SURVIVAL
-[15:10:20] [Server thread/INFO]: Generating keypair
-[15:10:20] [Server thread/INFO]: Starting Minecraft server on *:25565
-[15:10:20] [Server thread/INFO]: Using epoll channel type
-[15:10:20] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[15:10:20] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[15:10:21] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.3-SNAPSHOT
-[15:10:21] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.3-SNAPSHOT is now loaded. Registering protocol transformers and injecting...
-[15:10:21] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
-[15:10:21] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
-[15:10:22] [Server thread/INFO]: [ViaBackwards] Loading translations...
-[15:10:22] [Server thread/INFO]: [ViaBackwards] Registering protocols...
-[15:10:22] [Server thread/INFO]: [Kryptonite] Loading server plugin Kryptonite v2.0.1
-[15:10:22] [Server thread/INFO]: [MinecraftDashboard] Loading server plugin MinecraftDashboard v1.1.7
-[15:10:22] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.3-SNAPSHOT
-[15:10:22] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[15:10:22] [Server thread/INFO]: Preparing level "world"
-[15:10:23] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[15:10:23] [Paper Common Worker #0/INFO]: [MCTypeRegistry] Initialising converters for DataConverter...
-[15:10:23] [Paper Common Worker #0/INFO]: [MCTypeRegistry] Finished initialising converters for DataConverter in 302.4ms
-[15:10:23] [Server thread/INFO]: Preparing spawn area: 0%
-[15:10:23] [Server thread/INFO]: Preparing spawn area: 0%
-[15:10:24] [Server thread/INFO]: Preparing spawn area: 0%
-[15:10:24] [Server thread/INFO]: Time elapsed: 1239 ms
-[15:10:24] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[15:10:24] [Server thread/INFO]: Preparing spawn area: 0%
-[15:10:24] [Server thread/INFO]: Time elapsed: 207 ms
-[15:10:24] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[15:10:24] [Server thread/INFO]: Preparing spawn area: 0%
-[15:10:24] [Server thread/INFO]: Time elapsed: 107 ms
-[15:10:24] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.3-SNAPSHOT
-[15:10:24] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.21.2-1.21.3 (768)
-[15:10:24] [Server thread/INFO]: [Kryptonite] Enabling Kryptonite v2.0.1
-[15:10:24] [Server thread/INFO]: [Kryptonite] 
-[15:10:24] [Server thread/INFO]: [Kryptonite] █▄▀ █▀█ █▄█ █▀█ ▀█▀ █▀█ █▄ █ █ ▀█▀ █▀▀
-[15:10:24] [Server thread/INFO]: [Kryptonite] █ █ █▀▄  █  █▀▀  █  █▄█ █ ▀█ █  █  ██▄
-[15:10:24] [Server thread/INFO]: [Kryptonite] 
-[15:10:24] [Server thread/INFO]: [Kryptonite] Running Kryptonite version 2.0.1.
-[15:10:24] [Server thread/INFO]: [Kryptonite] Please report any issues with Kryptonite to our GitHub repository: https://github.com/lewmc/kryptonite/issues
-[15:10:24] [Server thread/INFO]: [Kryptonite] 
-[15:10:24] [Server thread/INFO]: [Kryptonite] Beginning startup...
-[15:10:24] [Server thread/INFO]: [Kryptonite] 
-[15:10:25] [Server thread/INFO]: [Kryptonite] You are running the latest version of Kryptonite.
-[15:10:25] [Server thread/INFO]: [Kryptonite] 
-[15:10:25] [Server thread/INFO]: [Kryptonite] Running server jar: Pufferfish version 1.21.3-R0.1-SNAPSHOT
-[15:10:25] [Server thread/INFO]: [Kryptonite] Supported configurations loaded: Server Properties, Bukkit, Spigot, Paper (World Defaults), Paper (Global), Pufferfish.
-[15:10:25] [Server thread/INFO]: [Kryptonite] 
-[15:10:25] [Server thread/INFO]: [Kryptonite] Startup completed.
-[15:10:25] [Server thread/INFO]: [MinecraftDashboard] Enabling MinecraftDashboard v1.1.7
-[15:10:26] [Server thread/INFO]: [org.reflections.Reflections] Reflections took 135 ms to scan 1 urls, producing 2 keys and 34 values
-[15:10:26] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.3-SNAPSHOT
-[15:10:26] [Server thread/INFO]: [spark] Starting background profiler...
-[15:10:28] [Server thread/INFO]: Done preparing level "world" (5.659s)
-[15:10:28] [Server thread/INFO]: Running delayed init tasks
-[15:10:28] [Server thread/INFO]: Done (29.767s)! For help, type "help"
-[15:10:28] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
-[15:10:28] [Server thread/INFO]: [ViaVersion] You are running a development version of the plugin, please report any bugs to GitHub.
-[15:10:35] [User Authenticator #0/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
-[15:10:37] [Server thread/INFO]: _Claddy__ joined the game
-[15:10:37] [Server thread/INFO]: _Claddy__[/127.39.192.83:53501] logged in with entity id 100 at ([world]62.700671195023375, 63.0, -309.08324309074163)
-[15:13:34] [Server thread/INFO]: _Claddy__ issued server command: /tps
-[15:13:48] [pool-14-thread-2/WARN]: Executing command "op @a"..
-[15:13:48] [Server thread/INFO]: Made _Claddy__ a server operator
-[15:13:52] [Server thread/INFO]: _Claddy__ issued server command: /tps
-[15:18:26] [Server thread/INFO]: _Claddy__ issued server command: /difficulty hard
-[15:18:26] [Server thread/INFO]: [_Claddy__: The difficulty has been set to Hard]
-[15:20:50] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
-[15:20:50] [Server thread/INFO]: _Claddy__ left the game
-[15:22:42] [User Authenticator #1/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
-[15:22:43] [Server thread/INFO]: _Claddy__ joined the game
-[15:22:43] [Server thread/INFO]: _Claddy__[/127.39.192.83:34905] logged in with entity id 5066 at ([world]757.6786056925386, 64.0, 605.1861708720384)
-[15:24:31] [Server thread/INFO]: _Claddy__ issued server command: /tpsbar
-[15:25:05] [Server thread/INFO]: Villager Villager['Villager'/5834, uuid='06ba9644-1ef1-449c-9b71-7a4ff20c2049', l='ServerLevel[world]', x=680.63, y=67.00, z=871.28, cpos=[42, 54], tl=230, v=true] died, message: 'Villager suffocated in a wall'
-[15:25:07] [Server thread/INFO]: _Claddy__ issued server command: /kos
-[15:30:02] [Server thread/INFO]: _Claddy__ issued server command: /gamemode creative
-[15:30:02] [Server thread/INFO]: [_Claddy__: Set own game mode to Creative Mode]
-[15:30:21] [Server thread/INFO]: _Claddy__ issued server command: /locate structure minecraft:village_plains
-[15:30:21] [Server thread/INFO]: Locating element minecraft:village_plains took 1 ms
-[15:30:23] [Server thread/INFO]: _Claddy__ issued server command: /tp @s -416 ~ 752
-[15:30:23] [Netty Epoll Server IO #2/WARN]: [ViaVersion] (1.21.2->1.21) Mixed combinations of relative and absolute delta movements are not supported for 1.21.1 players. This will result in incorrect movement for the player. 
-[15:30:23] [Server thread/INFO]: [_Claddy__: Teleported _Claddy__ to -415.500000, 102.871126, 752.500000]
-[15:30:28] [Server thread/INFO]: _Claddy__ issued server command: /tps
-[15:30:30] [Server thread/INFO]: _Claddy__ issued server command: /tps
-[15:30:33] [Server thread/INFO]: _Claddy__ issued server command: /gamemode survival
-[15:30:33] [Server thread/INFO]: [_Claddy__: Set own game mode to Survival Mode]
-[15:30:49] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
-[15:30:49] [Server thread/INFO]: _Claddy__ left the game
-[15:31:07] [User Authenticator #2/INFO]: UUID of player Vezmir is 716be07c-7282-4f1d-9346-823a20fc5fd0
-[15:31:11] [Server thread/INFO]: Vezmir joined the game
-[15:31:11] [Server thread/INFO]: Vezmir[/127.156.7.78:35747] logged in with entity id 9067 at ([world]73.5, 64.0, -282.5)
-[15:31:34] [Netty Epoll Server IO #3/WARN]: Failed to update secure chat state for Vezmir: 'Chat disabled due to missing profile public key. Please try reconnecting.'
-[15:31:38] [Async Chat Thread - #1/INFO]: <Vezmir> wsp
-[15:32:20] [Server thread/INFO]: _Claddy__ (/127.39.192.83:33681) lost connection: Disconnected
-[15:32:27] [User Authenticator #3/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
-[15:32:28] [Server thread/INFO]: _Claddy__ joined the game
-[15:32:28] [Server thread/INFO]: _Claddy__[/127.39.192.83:59785] logged in with entity id 9322 at ([world]-432.75003614428255, 63.0, 735.2223347909348)
-[15:32:34] [Netty Epoll Server IO #2/WARN]: Failed to update secure chat state for _Claddy__: 'Chat disabled due to missing profile public key. Please try reconnecting.'
-[15:32:37] [Async Chat Thread - #1/INFO]: <_Claddy__> ?
-[15:32:48] [Server thread/INFO]: _Claddy__ issued server command: /tp Vezmir _Claddy__
-[15:32:48] [Server thread/INFO]: [_Claddy__: Teleported Vezmir to _Claddy__]
-[15:33:25] [Async Chat Thread - #1/INFO]: <_Claddy__> hi
-[15:33:30] [Async Chat Thread - #1/INFO]: <Vezmir> hlo
-[15:33:35] [Async Chat Thread - #1/INFO]: <Vezmir> hwt ya doin
-[15:33:37] [Server thread/INFO]: _Claddy__ has made the advancement [Stone Age]
-[15:33:44] [Async Chat Thread - #1/INFO]: <_Claddy__> good you?
-[15:33:54] [Async Chat Thread - #1/INFO]: <Vezmir> this is not claddy is it
-[15:34:01] [Async Chat Thread - #1/INFO]: <_Claddy__> wdym?
-[15:34:07] [Server thread/INFO]: _Claddy__ has made the advancement [Getting an Upgrade]
-[15:34:08] [Async Chat Thread - #1/INFO]: <Vezmir> ok who are you
-[15:34:15] [Async Chat Thread - #1/INFO]: <_Claddy__> nigga
-[15:34:20] [Async Chat Thread - #1/INFO]: <_Claddy__> nigga man
-[15:34:25] [Async Chat Thread - #1/INFO]: <Vezmir> oh hes back
-[15:34:27] [Server thread/INFO]: Vezmir has made the advancement [Stone Age]
-[15:34:37] [Async Chat Thread - #1/INFO]: <_Claddy__> fym
-[15:34:40] [Async Chat Thread - #1/INFO]: <_Claddy__> hes back
-[15:34:45] [Server thread/INFO]: Vezmir has made the advancement [Getting an Upgrade]
-[15:35:01] [Async Chat Thread - #1/INFO]: <Vezmir> shadow says he wanna play a modpack
-[15:35:30] [Async Chat Thread - #1/INFO]: <_Claddy__> oh ohk
-[15:35:45] [Server thread/INFO]: _Claddy__ has made the advancement [Monster Hunter]
-[15:36:03] [Async Chat Thread - #1/INFO]: <_Claddy__> so lucid that axe duel?
-[15:36:08] [Async Chat Thread - #1/INFO]: <Vezmir> oh yh
-[15:36:09] [Async Chat Thread - #0/INFO]: <Vezmir> minemen?
-[15:36:14] [Async Chat Thread - #0/INFO]: <_Claddy__> nah cat
-[15:36:17] [Async Chat Thread - #0/INFO]: <Vezmir> nah
-[15:36:18] [Async Chat Thread - #0/INFO]: <Vezmir> 200ms
-[15:37:05] [Server thread/INFO]: _Claddy__ has made the advancement [Acquire Hardware]
-[15:37:17] [Server thread/INFO]: _Claddy__ issued server command: /gamemode creative
-[15:37:17] [Server thread/INFO]: [_Claddy__: Set own game mode to Creative Mode]
-[15:37:20] [Server thread/INFO]: _Claddy__ issued server command: /gamemode survival
-[15:37:20] [Server thread/INFO]: [_Claddy__: Set own game mode to Survival Mode]
-[15:37:23] [Async Chat Thread - #2/INFO]: <Vezmir> Nice
-[15:37:26] [Async Chat Thread - #2/INFO]: <Vezmir> go minemen
-[15:37:28] [Server thread/INFO]: Vezmir lost connection: Disconnected
-[15:37:28] [Server thread/INFO]: Vezmir left the game
-[15:37:30] [Server thread/INFO]: _Claddy__ lost connection: Disconnected
-[15:37:30] [Server thread/INFO]: _Claddy__ left the game
+[18:20:46] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 6.11.0-1014-azure (amd64)
+[18:20:46] [ServerMain/INFO]: [bootstrap] Loading Pufferfish 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) for Minecraft 1.21.3
+[18:20:47] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[18:20:47] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'plugins/SkBee-3.11.2.jar'...
+[18:20:47] [Paper Plugin Remapper Thread - 3/INFO]: [PluginRemapper] Remapping plugin 'plugins/Skript-2.11.1.jar'...
+[18:20:49] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'plugins/SkBee-3.11.2.jar' in 1446ms.
+[18:20:49] [Paper Plugin Remapper Thread - 3/INFO]: [PluginRemapper] Done remapping plugin 'plugins/Skript-2.11.1.jar' in 1814ms.
+[18:20:49] [ServerMain/INFO]: [PluginInitializerManager] Initialized 6 plugins
+[18:20:49] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (6):
+ - Kryptonite (2.0.1), MinecraftDashboard (1.1.7), SkBee (3.11.2), Skript (2.11.1), ViaBackwards (5.3.3-SNAPSHOT), ViaVersion (5.3.3-SNAPSHOT)
+[18:20:53] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[18:20:55] [ServerMain/INFO]: Loaded 1337 recipes
+[18:20:55] [ServerMain/INFO]: Loaded 1448 advancements
+[18:20:55] [Server thread/INFO]: Starting minecraft server version 1.21.3
+[18:20:55] [Server thread/INFO]: Loading properties
+[18:20:55] [Server thread/INFO]: This server is running Pufferfish version 1.21.3-27-HEAD@04bc249 (2024-12-04T01:51:20Z) (Implementing API version 1.21.3-R0.1-SNAPSHOT)
+[18:20:56] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[18:20:56] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[18:20:56] [Server thread/INFO]: Using 4 threads for Netty based IO
+[18:20:56] [Server thread/INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[18:20:56] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using population gen parallelism: true
+[18:20:57] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[18:20:57] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[18:20:57] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[18:20:57] [Server thread/INFO]: Default game type: SURVIVAL
+[18:20:57] [Server thread/INFO]: Generating keypair
+[18:20:57] [Server thread/INFO]: Starting Minecraft server on *:25565
+[18:20:57] [Server thread/INFO]: Using epoll channel type
+[18:20:57] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[18:20:57] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[18:20:58] [Server thread/INFO]: [Skript] Loading server plugin Skript v2.11.1
+[18:20:58] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.3.3-SNAPSHOT
+[18:20:58] [Server thread/INFO]: [ViaVersion] ViaVersion 5.3.3-SNAPSHOT is now loaded. Registering protocol transformers and injecting...
+[18:20:58] [Via-Mappingloader-0/INFO]: [ViaVersion] Loading block connection mappings ...
+[18:20:58] [Via-Mappingloader-0/INFO]: [ViaVersion] Using FastUtil Long2ObjectOpenHashMap for block connections
+[18:20:59] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[18:20:59] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[18:20:59] [Server thread/INFO]: [Kryptonite] Loading server plugin Kryptonite v2.0.1
+[18:20:59] [Server thread/INFO]: [SkBee] Loading server plugin SkBee v3.11.2
+[18:20:59] [Server thread/INFO]: [MinecraftDashboard] Loading server plugin MinecraftDashboard v1.1.7
+[18:20:59] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.3.3-SNAPSHOT
+[18:20:59] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[18:20:59] [Server thread/INFO]: Preparing level "world"
+[18:21:00] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[18:21:00] [Server thread/INFO]: Preparing spawn area: 0%
+[18:21:00] [Paper Common Worker #0/INFO]: [MCTypeRegistry] Initialising converters for DataConverter...
+[18:21:00] [Paper Common Worker #0/INFO]: [MCTypeRegistry] Finished initialising converters for DataConverter in 260.3ms
+[18:21:00] [Server thread/INFO]: Preparing spawn area: 2%
+[18:21:01] [Server thread/INFO]: Preparing spawn area: 2%
+[18:21:01] [Server thread/INFO]: Time elapsed: 1145 ms
+[18:21:01] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[18:21:01] [Server thread/INFO]: Preparing spawn area: 0%
+[18:21:01] [Server thread/INFO]: Time elapsed: 193 ms
+[18:21:01] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[18:21:01] [Server thread/INFO]: Preparing spawn area: 0%
+[18:21:01] [Server thread/INFO]: Time elapsed: 106 ms
+[18:21:01] [Server thread/INFO]: [Skript] Enabling Skript v2.11.1
+[18:21:01] [Server thread/INFO]: [Skript] Successfully generated the config and the example scripts.
+[18:21:02] [ForkJoinPool.commonPool-worker-1/INFO]: [Skript] You're currently running the latest stable version of Skript.
+[18:21:03] [Server thread/INFO]: [Skript]  ~ created by & © Peter Güttinger aka Njol ~
+[18:21:03] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.3.3-SNAPSHOT
+[18:21:03] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 1.21.2-1.21.3 (768)
+[18:21:03] [Server thread/INFO]: [Kryptonite] Enabling Kryptonite v2.0.1
+[18:21:03] [Server thread/INFO]: [Kryptonite] 
+[18:21:03] [Server thread/INFO]: [Kryptonite] █▄▀ █▀█ █▄█ █▀█ ▀█▀ █▀█ █▄ █ █ ▀█▀ █▀▀
+[18:21:03] [Server thread/INFO]: [Kryptonite] █ █ █▀▄  █  █▀▀  █  █▄█ █ ▀█ █  █  ██▄
+[18:21:03] [Server thread/INFO]: [Kryptonite] 
+[18:21:03] [Server thread/INFO]: [Kryptonite] Running Kryptonite version 2.0.1.
+[18:21:03] [Server thread/INFO]: [Kryptonite] Please report any issues with Kryptonite to our GitHub repository: https://github.com/lewmc/kryptonite/issues
+[18:21:03] [Server thread/INFO]: [Kryptonite] 
+[18:21:03] [Server thread/INFO]: [Kryptonite] Beginning startup...
+[18:21:03] [Server thread/INFO]: [Kryptonite] 
+[18:21:04] [Server thread/INFO]: [Kryptonite] You are running the latest version of Kryptonite.
+[18:21:04] [Server thread/INFO]: [Kryptonite] 
+[18:21:04] [Server thread/INFO]: [Kryptonite] Running server jar: Pufferfish version 1.21.3-R0.1-SNAPSHOT
+[18:21:04] [Server thread/INFO]: [Kryptonite] Supported configurations loaded: Server Properties, Bukkit, Spigot, Paper (World Defaults), Paper (Global), Pufferfish.
+[18:21:04] [Server thread/INFO]: [Kryptonite] 
+[18:21:04] [Server thread/INFO]: [Kryptonite] Startup completed.
+[18:21:04] [Server thread/INFO]: [SkBee] Enabling SkBee v3.11.2
+[18:21:04] [Server thread/INFO]: [SkBee] Registry Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Loading NBTApi...
+[18:21:05] [Server thread/INFO]: [SkBee] [NBTAPI] Found Minecraft: 1.21.3! Trying to find NMS support
+[18:21:05] [Server thread/INFO]: [SkBee] [NBTAPI] NMS support 'MC1_21_R2' loaded!
+[18:21:05] [Server thread/INFO]: [SkBee] Successfully loaded NBTApi!
+[18:21:05] [ForkJoinPool.commonPool-worker-1/INFO]: [Skript] Loaded 5420 aliases in 1400ms
+[18:21:05] [Server thread/INFO]: [SkBee] NBT Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Text Component Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Advancement Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] BossBar Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Bound Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Damage Source Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Display Entity Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Fastboard[Adventure] Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Fishing Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Game Event Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Item Component Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Particle Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Property Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] RayTrace Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Recipe Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Scoreboard Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Statistic Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Structure Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] SwitchCase Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Tick Manager Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Villager Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Virtual Furnace Elements disabled via config
+[18:21:05] [Server thread/INFO]: [SkBee] World Border Elements disabled (now in Skript)
+[18:21:05] [Server thread/INFO]: [SkBee] World Creator Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Chunk Generator Elements successfully loaded
+[18:21:05] [Server thread/INFO]: [SkBee] Loaded (456) elements:
+[18:21:05] [Server thread/INFO]: [SkBee]  - 55 events
+[18:21:05] [Server thread/INFO]: [SkBee]  - 71 effects
+[18:21:05] [Server thread/INFO]: [SkBee]  - 273 expressions
+[18:21:05] [Server thread/INFO]: [SkBee]  - 26 conditions
+[18:21:05] [Server thread/INFO]: [SkBee]  - 31 sections
+[18:21:05] [Server thread/INFO]: [SkBee]  - 10 properties
+[18:21:05] [Server thread/INFO]: [SkBee] Checking for update...
+[18:21:05] [Server thread/INFO]: [SkBee] Plugin is up to date!
+[18:21:05] [Server thread/INFO]: [SkBee] Successfully enabled v3.11.2 in 1.02 seconds
+[18:21:05] [Server thread/INFO]: [MinecraftDashboard] Enabling MinecraftDashboard v1.1.7
+[18:21:07] [Server thread/INFO]: [org.reflections.Reflections] Reflections took 76 ms to scan 1 urls, producing 2 keys and 34 values
+[18:21:07] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.3.3-SNAPSHOT
+[18:21:07] [Server thread/INFO]: [spark] Starting background profiler...
+[18:21:07] [Server thread/INFO]: Done preparing level "world" (7.903s)
+[18:21:07] [Server thread/INFO]: Running delayed init tasks
+[18:21:07] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[18:21:07] [Server thread/INFO]: [Skript] Loading variables...
+[18:21:07] [Server thread/INFO]: [Skript] Loaded 0 variables in 0.0 seconds
+[18:21:07] [Server thread/INFO]: [Skript] All scripts loaded without errors.
+[18:21:07] [Server thread/INFO]: [Skript]     No scripts were found, maybe you should write some ;)
+[18:21:07] [Server thread/INFO]: [Skript] Finished loading.
+[18:21:07] [Server thread/INFO]: Done (22.792s)! For help, type "help"
+[18:21:07] [Server thread/INFO]: [ViaVersion] You are running a development version of the plugin, please report any bugs to GitHub.
+[18:22:56] [pool-16-thread-3/WARN]: Executing command "sk reload 2d"..
+[18:22:56] [Server thread/INFO]: [Skript] Can't find the script '2d' in the scripts folder!
+[18:23:03] [pool-16-thread-4/WARN]: Executing command "sk reload 2dcraft"..
+[18:23:03] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:23:03] [Server thread/INFO]: Line 91: (2dcraft.sk)
+[18:23:03] [Server thread/INFO]:     indentation error: expected 20 spaces, but found 21 spaces
+[18:23:03] [Server thread/INFO]:     Line: make {_loop_player} look at yaw {@fixed_yaw} and pitch {@fixed_pitch}
+[18:23:03] [Server thread/INFO]:  
+[18:23:05] [Server thread/INFO]: Line 25: (2dcraft.sk)
+[18:23:05] [Server thread/INFO]:     Can't understand this condition/effect: make {_player} look at yaw 90 and pitch 0
+[18:23:05] [Server thread/INFO]:     Line: make {_player} look at yaw {@fixed_yaw} and pitch {@fixed_pitch}
+[18:23:05] [Server thread/INFO]:  
+[18:23:05] [Server thread/INFO]: Line 41: (2dcraft.sk)
+[18:23:05] [Server thread/INFO]:     Can't understand this expression: 'to'
+[18:23:05] [Server thread/INFO]:     Line: set {_destination} to to# 'to' is the destination location in the teleport event
+[18:23:05] [Server thread/INFO]:  
+[18:23:06] [Server thread/INFO]: Line 52: (2dcraft.sk)
+[18:23:06] [Server thread/INFO]:     Can't understand this condition/effect: set destination of event to {_corrected_destination}
+[18:23:06] [Server thread/INFO]:     Line: set destination of event to {_corrected_destination}
+[18:23:06] [Server thread/INFO]:  
+[18:23:06] [Server thread/INFO]: Line 58: (2dcraft.sk)
+[18:23:06] [Server thread/INFO]:     Can't understand this condition/effect: make {_player} look at yaw 90 and pitch 0
+[18:23:06] [Server thread/INFO]:     Line: make {_player} look at yaw {@fixed_yaw} and pitch {@fixed_pitch}
+[18:23:06] [Server thread/INFO]:  
+[18:23:06] [Server thread/INFO]: Line 87: (2dcraft.sk)
+[18:23:06] [Server thread/INFO]:     Can't understand this condition: '{_current_yaw} is not 90 or {_current_pitch} is not 0'
+[18:23:06] [Server thread/INFO]:     Line: if {_current_yaw} is not {@fixed_yaw} or {_current_pitch} is not {@fixed_pitch}:
+[18:23:06] [Server thread/INFO]:  
+[18:23:06] [Server thread/INFO]:     Encountered 6 errors while reloading 2dcraft.sk! (3037ms)
+[18:23:06] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2988ms or 59 ticks behind
+[18:24:21] [User Authenticator #0/INFO]: UUID of player _Claddy__ is 0b712039-1e2c-45c6-8447-de4367f0c8d7
+[18:24:23] [Server thread/INFO]: _Claddy__ joined the game
+[18:24:23] [Server thread/INFO]: _Claddy__[/127.122.251.136:56783] logged in with entity id 28 at ([world]-430.5271790563924, 64.0, 692.9420174465554)
+[18:24:28] [Server thread/WARN]: Failed to handle packet for 127.122.251.136/127.122.251.136:56783
+net.minecraft.ReportedException: Ticking player
+	at net.minecraft.server.level.ServerPlayer.doTick(ServerPlayer.java:1145) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.network.ServerGamePacketListenerImpl.tick(ServerGamePacketListenerImpl.java:356) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.network.Connection.tick(Connection.java:638) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.network.ServerConnectionListener.tick(ServerConnectionListener.java:248) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.MinecraftServer.tickConnection(MinecraftServer.java:1925) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.dedicated.DedicatedServer.tickConnection(DedicatedServer.java:456) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1898) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:1672) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1331) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:341) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: java.util.ConcurrentModificationException
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1095) ~[?:?]
+	at java.base/java.util.ArrayList$Itr.next(ArrayList.java:1049) ~[?:?]
+	at net.minecraft.world.entity.Entity.checkInsideBlocks(Entity.java:1733) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.world.entity.Entity.applyEffectsFromBlocks(Entity.java:1358) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.world.entity.Entity.applyEffectsFromBlocks(Entity.java:1345) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.world.entity.LivingEntity.aiStep(LivingEntity.java:3686) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.world.entity.player.Player.aiStep(Player.java:598) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.world.entity.LivingEntity.tick(LivingEntity.java:3333) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.world.entity.player.Player.tick(Player.java:288) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	at net.minecraft.server.level.ServerPlayer.doTick(ServerPlayer.java:1063) ~[pufferfish-1.21.3.jar:1.21.3-27-04bc249]
+	... 10 more
+[18:24:28] [Server thread/INFO]: _Claddy__ lost connection: Internal server error
+[18:24:28] [Server thread/INFO]: _Claddy__ left the game
+[18:24:39] [pool-16-thread-2/WARN]: Executing command "sk reload 2dcraft"..
+[18:24:39] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:24:41] [Server thread/INFO]: Line 53: (2dcraft.sk)
+[18:24:41] [Server thread/INFO]:     the location can't be set to anything
+[18:24:41] [Server thread/INFO]:     Line: set event-location to {_corrected_destination}
+[18:24:41] [Server thread/INFO]:  
+[18:24:41] [Server thread/INFO]: Line 89: (2dcraft.sk)
+[18:24:41] [Server thread/INFO]:     Can't understand this condition: 'not ({_current_yaw} is 90 and {_current_pitch} is 0)'
+[18:24:41] [Server thread/INFO]:     Line: if not ({_current_yaw} is {@fixed_yaw} and {_current_pitch} is {@fixed_pitch}):
+[18:24:41] [Server thread/INFO]:  
+[18:24:41] [Server thread/INFO]:     Encountered 2 errors while reloading 2dcraft.sk! (1561ms)
+[18:25:35] [pool-16-thread-4/WARN]: Executing command "sk reload 2dcraft"..
+[18:25:35] [Server thread/INFO]: [Skript] Reloading 2dcraft.sk...
+[18:25:37] [Server thread/INFO]: Line 53: (2dcraft.sk)
+[18:25:37] [Server thread/INFO]:     Can't understand this condition/effect: set teleport location to {_corrected_destination}
+[18:25:37] [Server thread/INFO]:     Line: set teleport location to {_corrected_destination}
+[18:25:37] [Server thread/INFO]:  
+[18:25:37] [Server thread/INFO]: Line 89: (2dcraft.sk)
+[18:25:37] [Server thread/INFO]:     Can't understand this condition: '{_current_yaw} is not 90 or {_current_pitch} is not 0'
+[18:25:37] [Server thread/INFO]:     Line: if {_current_yaw} is not {@fixed_yaw} or {_current_pitch} is not {@fixed_pitch}:
+[18:25:37] [Server thread/INFO]:  
+[18:25:37] [Server thread/INFO]:     Encountered 2 errors while reloading 2dcraft.sk! (1602ms)

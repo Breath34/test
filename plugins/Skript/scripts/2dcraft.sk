@@ -1,0 +1,94 @@
+options:
+    fixed_z_coordinate: 0
+    fixed_yaw: 90 # Player faces positive X-axis (can be changed to -90 for other direction)
+    fixed_pitch: 0 # Horizontal view
+    correction_interval: 3 ticks # How often to check and correct position/rotation (lower is more resource intensive but smoother)
+
+# --- Variables ---
+# {2d_internal_teleport::%player%} is a flag to prevent teleport event loops.
+# It's set to true before an internal correction teleport and cleared by the 'on teleport' event.
+
+# --- Event Handlers ---
+
+# On Join: Set initial position and view
+on join:
+    set {_player} to player
+    # Clear any potentially lingering flag (e.g., from server crash)
+    delete {2d_internal_teleport::%{_player}%}
+
+    set {2d_internal_teleport::%{_player}%} to true # Mark upcoming teleport as internal
+    teleport {_player} to location(x-coordinate of {_player}, y-coordinate of {_player}, {@fixed_z_coordinate}, world of {_player})
+    
+    # Wait for teleport to fully process before setting look direction
+    wait 1 tick 
+    if {_player} is online: # Ensure player is still online
+        set {_player}'s yaw to {@fixed_yaw}
+        set {_player}'s pitch to {@fixed_pitch}
+    # The 'on teleport' event will clear the {2d_internal_teleport::%{_player}%} flag.
+
+# On Quit: Clean up player-specific variables
+on quit:
+    delete {2d_internal_teleport::%{player}%}
+
+# On Teleport: Correct Z-coordinate and view if not an internal correction teleport
+on teleport:
+    set {_player} to player
+    # If this teleport was initiated by this script for correction, clear flag and stop
+    if {2d_internal_teleport::%{_player}%} is set:
+        delete {2d_internal_teleport::%{_player}%} 
+        stop 
+
+    # This is an external teleport (e.g., command, ender pearl)
+    set {_destination} to event-location # 'event-location' is the destination in the teleport event
+    set {_corrected_destination} to {_destination}
+    set {_needs_destination_correction} to false
+
+    # If the destination Z-coordinate is not the fixed one, prepare to correct it
+    if z-coordinate of {_destination} is not {@fixed_z_coordinate}:
+        set {_corrected_destination} to location(x-coordinate of {_destination}, y-coordinate of {_destination}, {@fixed_z_coordinate}, world of {_destination})
+        set {_needs_destination_correction} to true
+
+    # If destination was corrected, update the event's target location
+    if {_needs_destination_correction} is true:
+        set teleport location to {_corrected_destination}
+
+    # Always correct view after any (potentially modified) external teleport
+    # Wait for the teleport to visually complete for the client before setting look
+    wait 2 ticks 
+    if {_player} is online: # Ensure player is still online
+        set {_player}'s yaw to {@fixed_yaw}
+        set {_player}'s pitch to {@fixed_pitch}
+
+# Periodic Check: Enforce Z-coordinate and view for movement drifts and look changes
+every {@correction_interval}:
+    loop all players:
+        set {_loop_player} to loop-player
+        if {_loop_player} is online: # Process only online players
+            set {_current_loc} to location of {_loop_player}
+            set {_current_yaw} to yaw of {_loop_player}
+            set {_current_pitch} to pitch of {_loop_player}
+
+            set {_needs_pos_correction} to false
+            set {_new_x} to x-coordinate of {_current_loc}
+            set {_new_y} to y-coordinate of {_current_loc}
+            set {_new_z} to z-coordinate of {_current_loc}
+
+            # Check if Z-coordinate needs correction
+            if {_new_z} is not {@fixed_z_coordinate}:
+                set {_new_z} to {@fixed_z_coordinate}
+                set {_needs_pos_correction} to true
+
+            # If position needs correction, perform an internal teleport
+            if {_needs_pos_correction} is true:
+                set {2d_internal_teleport::%{_loop_player}%} to true # Mark as internal
+                teleport {_loop_player} to location({_new_x}, {_new_y}, {_new_z}, world of {_loop_player})
+                # The 'on teleport' event handles clearing the flag. Player look is corrected next.
+
+            # Always check and correct view direction (yaw/pitch)
+            # This handles cases where the player turns their head without moving, or after a corrective teleport
+            if {_current_yaw} is not {@fixed_yaw} or {_current_pitch} is not {@fixed_pitch}:
+                # Small delay to ensure this applies after any potential teleport
+                wait 1 tick 
+                if {_loop_player} is online:
+                    set {_loop_player}'s yaw to {@fixed_yaw}
+                    set {_loop_player}'s pitch to {@fixed_pitch} 
