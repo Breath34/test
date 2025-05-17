@@ -1,100 +1,550 @@
-command /shonenadmin:
-    trigger:
-        # Admin commands will go here
-        send "Shonen Smash Admin Panel" to player
-
-on load:
-    send "[Shonen Smash] Script loaded!" to console
-
-# Basic character and ability structure (to be expanded)
-# Example:
-# define character "Naruto":
-#     ability 1: "Rasengan"
-#     ability 2: "Shadow Clone Jutsu"
-
-# Game states
-# - Lobby
-# - Character Selection
-# - In-Game
-# - Post-Game
-
-# Player data (will likely use Skript variables or SkBee NBT)
-# - Chosen character
-# - Stocks/Lives
-# - Damage percentage
-
-# Arena management
-
 options:
-    default_stocks: 3
-    max_damage_for_knockback_scaling: 200 # Percentage at which knockback scaling maxes out
-    base_knockback_strength: 0.5
-    knockback_scaling_factor: 0.015
+    prefix: &7[&6Echoes&7]&r
+    echo_item_material: firework star # Material for the echo items
+    # Default ability costs - adjust as needed for balance
+    ability_cost_stonekin_stone: 1000
+    ability_cost_woodvigor_wood: 750
+    ability_cost_vitality_life: 1500
+    ability_cost_intellectboost_intellect: 500
+    ability_vitality_hearts: 1 # Each level of Vitality Boost adds 1 heart (2 health points)
 
-# Core gameplay loops
-# - Attack handling
-# - Ability activation
-# - Damage calculation
-# - Knockback
-# - Stock deduction
-# - Win/Loss conditions
+# Player Echo Storage & Abilities
+# Echoes: {echoes.%player%.<type>}
+# Abilities: {player.ability.<ability_name>} (e.g., {player.ability.stonekin} = true or level)
 
-# SkBee and Skript-Reflect will be used for more advanced features like:
-# - Custom particle effects (SkBee)
-# - Complex inventory GUIs (SkBee)
-# - Accessing Bukkit/Spigot API for fine-grained control (Skript-Reflect)
-# - Custom sound effects (SkBee)
+on script load:
+    # This list helps manage echo types for GUIs and other systems.
+    # Format: "internal_name:Display Name:Material_For_GUI"
+    # Add new echo types here!
+    set {ECHO_TYPES::*} to "stone:Stone:stone", "wood:Wood:oak_log", "life:Life:rotten_flesh", "metal:Metal:iron_ingot", "gem:Gem:diamond", "void:Void:ender_pearl", "radiance:Radiance:glowstone_dust", "shadow:Shadow:coal_block", "volatile:Volatile:gunpowder", "nature:Nature:oak_sapling", "growth:Growth:wheat", "sustenance:Sustenance:bread", "depths:Depths:cod", "fortune:Fortune:gold_nugget", "intellect:Intellect:book", "power:Power:experience_bottle", "alchemy:Alchemy:potion", "commerce:Commerce:emerald", "discovery:Discovery:compass", "aquatic:Aquatic:prismarine_shard", "infernal:Infernal:blaze_rod"
+    log "{@prefix} Echoes of Creation (Expanded v2) script loaded."
+    log "{@prefix} Using SkBee for NBT. Includes Ability System. Artifacts & World Altar conceptual."
+    log "{@prefix} BALANCE drop rates & ability costs for your server!"
+    if {ECHO_TYPES::*} is not set: # Fallback initialization (should have been set above)
+        set {ECHO_TYPES::*} to "stone:Stone:stone", "wood:Wood:oak_log", "life:Life:rotten_flesh", "metal:Metal:iron_ingot", "gem:Gem:diamond", "void:Void:ender_pearl", "radiance:Radiance:glowstone_dust", "shadow:Shadow:coal_block", "volatile:Volatile:gunpowder", "nature:Nature:oak_sapling", "growth:Growth:wheat", "sustenance:Sustenance:bread", "depths:Depths:cod", "fortune:Fortune:gold_nugget", "intellect:Intellect:book", "power:Power:experience_bottle", "alchemy:Alchemy:potion", "commerce:Commerce:emerald", "discovery:Discovery:compass", "aquatic:Aquatic:prismarine_shard", "infernal:Infernal:blaze_rod"
 
-# Let's start with a simple join message
+
+# --- Functions ---
+
+function giveEchoItem(p: player, type: text, nbtValue: integer, amountToGive: integer = 1, silent: boolean = false):
+    set {_item_name} to title case "%{type}%"
+    set {_mat} to option "echo_item_material" parsed as item type
+    # SkBee is used here to add custom NBT to the item
+    set {_echo_item_single} to 1 of {_mat} named "&fEcho of %{_item_name}%" with lore "&7A faint whisper of %{type}%." with nbt "{EchoData:{type:\`"%{type}%\`", value:%{nbtValue}%, custom_echo:true}}"
+    give {_amountToGive} of {_echo_item_single} to {_p}
+    if {_silent} is false:
+        send "{@prefix} &aYou received %{_amountToGive}% Echo of %{_item_name}% (Value: %{nbtValue}% each)!" to {_p}
+
+function dropEchoItem(loc: location, type: text, nbtValue: integer):
+    set {_item_name} to title case "%{type}%"
+    set {_mat} to option "echo_item_material" parsed as item type
+    # SkBee is used here to add custom NBT to the item
+    set {_echo_item_to_drop} to 1 of {_mat} named "&fEcho of %{_item_name}%" with lore "&7A faint whisper of %{type}%." with nbt "{EchoData:{type:\`"%{type}%\`", value:%{nbtValue}%, custom_echo:true}}"
+    drop {_echo_item_to_drop} at {_loc}
+    # Add a small particle effect
+    spawn 3 of dust particle at {_loc} offset by vector(0.2, 0.2, 0.2)
+
+# --- Echo Generation Events ---
+
+# Mining Echoes
+on mine of stone or cobblestone or diorite or andesite or granite or deepslate:
+    if player's gamemode is survival:
+        chance of 65% # Reduced slightly as there are more sources now
+        dropEchoItem(location of event-block, "stone", 1)
+
+on mine of coal ore or deepslate coal ore:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "stone", 2)
+        chance of 40%:
+            dropEchoItem(location of event-block, "shadow", 1)
+
+on mine of iron ore or deepslate iron ore or copper ore or deepslate copper ore:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "metal", 1)
+        chance of 50%:
+            dropEchoItem(location of event-block, "stone", 1)
+
+on mine of gold ore or deepslate gold ore:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "metal", 2)
+        chance of 40%:
+            dropEchoItem(location of event-block, "radiance", 1)
+
+on mine of diamond ore or deepslate diamond ore or emerald ore or deepslate emerald ore:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "gem", 1)
+        dropEchoItem(location of event-block, "stone", 3)
+        chance of 10%:
+            dropEchoItem(location of event-block, "fortune", 1) # Rare bonus
+
+on mine of ancient_debris: # Netherite
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "infernal", 2)
+        dropEchoItem(location of event-block, "metal", 3)
+        dropEchoItem(location of event-block, "shadow", 1)
+
+# Woodcutting Echoes
+on mine of any log:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "wood", 1)
+        if {player.ability.woodvigor.%player%} is true: # Woodsman's Vigor check
+            chance of 10%:
+                drop 1 of event-block at location of event-block
+                send action bar "<gold>Woodsman's Vigor triggered!</gold>" to player
+                play sound "entity.arrow.hit_player" at volume 0.5 pitch 1.5 to player
+        if event-block contains "dark_oak" or event-block contains "spruce":
+            chance of 25%:
+                dropEchoItem(location of event-block, "nature", 1)
+        if event-block contains "mangrove":
+            chance of 20%:
+                dropEchoItem(location of event-block, "aquatic", 1)
+
+# Farming Echoes
+on break of fully grown wheat or carrots or potatoes or beetroots:
+    if player's gamemode is survival:
+        chance of 50%:
+            dropEchoItem(location of event-block, "growth", 1)
+        chance of 20%:
+            dropEchoItem(location of event-block, "sustenance", 1)
+
+on break of nether wart block when fully grown:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "alchemy", 1)
+        chance of 30%:
+            dropEchoItem(location of event-block, "infernal", 1)
+
+on break of chorus flower or chorus plant:
+    if player's gamemode is survival:
+        dropEchoItem(location of event-block, "void", 1)
+        chance of 10%:
+            dropEchoItem(location of event-block, "discovery", 1)
+
+# Fishing Echoes
+on fishing:
+    if player's gamemode is survival:
+        if fishing state is CAUGHT_FISH:
+            chance of 60%:
+                dropEchoItem(player's location, "depths", 1)
+            chance of 20%:
+                dropEchoItem(player's location, "aquatic", 1)
+        else if fishing state is CAUGHT_TREASURE:
+            dropEchoItem(player's location, "fortune", 1)
+            chance of 30%:
+                dropEchoItem(player's location, "depths", 2)
+
+# Enchanting Echoes
+on enchant item:
+    if player's gamemode is survival:
+        set {_levels_spent} to event-level
+        if {_levels_spent} >= 20:
+            dropEchoItem(player's location, "intellect", 2)
+            dropEchoItem(player's location, "power", 1)
+        else if {_levels_spent} >= 10:
+            dropEchoItem(player's location, "intellect", 1)
+        chance of ({_levels_spent} * 2)%:
+            dropEchoItem(player's location, "power", 1)
+
+# Potion Brewing Echoes
+on brew:
+    # This event might fire multiple times per brew cycle. A cooldown or more precise event (SkBee/Skript-Reflect) is better.
+    if {brew_echo_cooldown.%location of event-block%} is not set:
+        loop players in radius 5 of event-block:
+            if loop-player's gamemode is survival:
+                dropEchoItem(location of event-block, "alchemy", 1)
+                chance of 15%:
+                    dropEchoItem(location of event-block, "intellect", 1)
+                set {brew_echo_cooldown.%location of event-block%} to true
+                wait 5 seconds # Cooldown to prevent spam from one brewing stand for multiple results
+                delete {brew_echo_cooldown.%location of event-block%}
+                stop # Stop loop after first player to avoid multiple drops for same brew
+
+# Villager Trading Echoes
+# A proper "on successful trade" event is ideal (may require addons/Skript-Reflect).
+# This is a simplified version.
+on inventory click:
+    if name of current inventory contains "Villager" or name of current inventory contains "Trade": # Basic check
+        if cursor slot of player is not air: # Player is taking an item (trade completed)
+            # This is not perfectly reliable. A more robust solution would be ideal.
+            if {last_trade_echo.%player%} is not set or now > {last_trade_echo.%player%} + 30 seconds:
+                if player's gamemode is survival:
+                    chance of 40%: # Increased chance because this check is less frequent than right-click
+                        dropEchoItem(player's location, "commerce", 1)
+                        set {last_trade_echo.%player%} to now
+                        send action bar "<yellow>Echo of Commerce!</yellow>" to player
+
+# Combat Echoes
+on death of zombie or skeleton or spider or creeper:
+    if attacker is a player:
+        if attacker's gamemode is survival:
+            dropEchoItem(location of victim, "life", 1)
+            if victim is a creeper:
+                chance of 30%:
+                    dropEchoItem(location of victim, "volatile", 1)
+
+on death of enderman:
+    if attacker is a player:
+        if attacker's gamemode is survival:
+            dropEchoItem(location of victim, "void", 1)
+            dropEchoItem(location of victim, "life", 2)
+
+on death of blaze or ghast:
+    if attacker is a player:
+        if attacker's gamemode is survival:
+            dropEchoItem(location of victim, "infernal", 1)
+            dropEchoItem(location of victim, "life", 1)
+            if victim is ghast:
+                chance of 20%:
+                    dropEchoItem(location of victim, "volatile", 1)
+
+on death of wither skeleton:
+    if attacker is a player:
+        if attacker's gamemode is survival:
+            dropEchoItem(location of victim, "shadow", 2)
+            dropEchoItem(location of victim, "infernal", 1)
+            dropEchoItem(location of victim, "life", 2)
+
+on death of guardian or elder_guardian:
+    if attacker is a player:
+        if attacker's gamemode is survival:
+            dropEchoItem(location of victim, "aquatic", 2)
+            dropEchoItem(location of victim, "depths", 1)
+            if victim is elder_guardian:
+                dropEchoItem(location of victim, "gem", 1)
+                dropEchoItem(location of victim, "power", 2)
+                send "{@prefix} &3A powerful Echo resonates from the fallen Elder Guardian!" to attacker
+
+# Boss Echoes
+on death of ender_dragon:
+    dropEchoItem(location of victim, "void", 25)
+    dropEchoItem(location of victim, "power", 10)
+    dropEchoItem(location of victim, "discovery", 5)
+    broadcast "{@prefix} &5The Ender Dragon's defeat has released a torrent of powerful Echoes!"
+
+on death of wither:
+    dropEchoItem(location of victim, "shadow", 20)
+    dropEchoItem(location of victim, "infernal", 15)
+    dropEchoItem(location of victim, "volatile", 10)
+    broadcast "{@prefix} &8The Wither's destruction has unleashed dark and potent Echoes!"
+
+# Exploration Echoes
+on rightclick on chest:
+    if player's gamemode is survival:
+        set {_loc} to location of event-block
+        # Simplified structure check. Add more structure types or use biome checks.
+        # Note: Skript's "is in worldguard region" or similar checks might be better if WorldGuard is used.
+        # For vanilla structures, checking biome or proximity to structure centers is complex in pure Skript.
+        if {_loc} is in "minecraft:village" or {_loc} is in "minecraft:mineshaft" or {_loc} is in "minecraft:stronghold" or {_loc} is in "minecraft:jungle_pyramid" or {_loc} is in "minecraft:desert_pyramid" or {_loc} is in "minecraft:igloo" or {_loc} is in "minecraft:ocean_ruin" or {_loc} is in "minecraft:shipwreck" or {_loc} is in "minecraft:pillager_outpost" or {_loc} is in "minecraft:nether_fortress" or {_loc} is in "minecraft:bastion_remnant" or {_loc} is in "minecraft:end_city":
+            if {looted_chest_echo.%{_loc}%} is not set:
+                chance of 25%:
+                    dropEchoItem(player's location, "discovery", 1)
+                    set {looted_chest_echo.%{_loc}%} to true
+                    send action bar "<gold>Echo of Discovery found!</gold>" to player
+                    play sound "block.chest.open" at volume 0.5 pitch 1.2 to player
+
+# --- Echo Collection ---
+on pickup:
+    set {_item_nbt} to nbt of event-item
+    if {_item_nbt} has compound "EchoData":
+        if {_item_nbt}.EchoData has tag "custom_echo" as boolean:
+            if {_item_nbt}.EchoData.custom_echo is true:
+                cancel event
+                set {_type} to {_item_nbt}.EchoData.type as text
+                set {_value} to {_item_nbt}.EchoData.value as integer
+                add {_value} to {echoes.%player%.%{_type}%}
+                send action bar "<gray>+%{_value}% Echo of %title case {_type}%</gray>" to player
+                play sound "entity.experience_orb.pickup" at volume 0.5 pitch (1.5 + ({_value} * 0.05)) to player
+                remove event-item from drops
+
+# --- Commands ---
+command /echoes [<text>] [<offline player=player>] [<integer=1>]:
+    aliases: /myechoes, /echobalance
+    permission: echoes.view
+    permission message: "{@prefix} You don't have permission to view echoes."
+    trigger:
+        set {_cmd_player} to arg-2 # This is the target player for admin commands, or sender for self-view
+        if arg-1 is not set:
+            set {_p_view} to player # Who is viewing the GUI (always command sender)
+            set {_gui_name} to "&8Your Echoes"
+            set {_player_echo_count} to 0
+            loop {ECHO_TYPES::*}:
+                set {_internal_name} to (split loop-value by ":") at 1
+                if {echoes.%{_p_view}%.%{_internal_name}%} is set and {echoes.%{_p_view}%.%{_internal_name}%} > 0:
+                    increment {_player_echo_count}
+            
+            set {_rows} to ceil({_player_echo_count} / 9)
+            if {_rows} < 3: set {_rows} to 3
+            if {_rows} > 6: set {_rows} to 6
+
+            create a gui with virtual chest inventory with {_rows} rows named {_gui_name}: # Assuming TuSKe or similar GUI addon
+                set {_slot} to 0
+                loop {ECHO_TYPES::*}:
+                    set {_parts::*} to loop-value split by ":"
+                    set {_internal_name} to {_parts::1}
+                    set {_display_name} to {_parts::2}
+                    set {_material_string} to {_parts::3}
+                    set {_material} to {_material_string} parsed as item type
+                    if {echoes.%{_p_view}%.%{_internal_name}%} is set and {echoes.%{_p_view}%.%{_internal_name}%} > 0:
+                        make gui slot {_slot} with {_material} named "&fEcho of %{_display_name}%" with lore "&fAmount: &e%{echoes.%{_p_view}%.%{_internal_name}%}%"
+                        increment {_slot}
+                # Fill remaining with glass panes
+                set {_start_fill_slot} to {_slot}
+                loop (({_rows} * 9) - {_start_fill_slot}) times:
+                    make gui slot {_slot} with gray_stained_glass_pane named " "
+                    increment {_slot}
+            open last created gui to {_p_view}
+        else if arg-1 is "give" or "add":
+            if player has permission "echoes.admin":
+                if {_cmd_player} is set and arg-3 is set and arg-4 is set:
+                    set {_target} to {_cmd_player}
+                    set {_type} to lower case arg-3
+                    set {_amount} to arg-4
+                    add {_amount} to {echoes.%{_target}%.%{_type}%}
+                    if {echoes.%{_target}%.%{_type}%} was not set: # Ensure initialization if it was a new type
+                        set {echoes.%{_target}%.%{_type}%} to 0
+                        add {_amount} to {echoes.%{_target}%.%{_type}%}
+                    send "{@prefix} &aAdded %{_amount}% Echo of %{_type}% to %{_target}%'s balance." to sender
+                    if {_target} is online:
+                        send "{@prefix} &aYou received %{_amount}% Echo of %{_type}% from an admin." to {_target} as player
+                        play sound "entity.player.levelup" at volume 0.8 pitch 1.2 to {_target} as player
+                else:
+                    send "{@prefix} &cUsage: /echoes %arg-1% <player> <type> <amount>" to sender
+            else:
+                send "{@prefix} &cYou don't have permission for this admin command."
+        else if arg-1 is "item":
+            if player has permission "echoes.admin":
+                if {_cmd_player} is set and arg-3 is set and arg-4 is set:
+                    set {_target} to {_cmd_player}
+                    set {_type} to lower case arg-3
+                    set {_amount} to arg-4 # This is the NBT value for the echo item
+                    if {_target} is online:
+                        call giveEchoItem(p: ({_target} as player), type: {_type}, nbtValue: {_amount}, amountToGive: 1, silent: false)
+                    else:
+                        send "{@prefix} &cPlayer %{_target}% not found or not online."
+                else:
+                    send "{@prefix} &cUsage: /echoes item <player> <type> <value_for_nbt>"
+            else:
+                send "{@prefix} &cYou don't have permission for this admin command."
+        # Admin command for resetting player data (use with extreme caution)
+        else if arg-1 is "resetplayer" and player has permission "echoes.admin":
+            if {_cmd_player} is set:
+                set {_target_player} to {_cmd_player}
+                send "{@prefix} &cAre you sure you want to reset ALL Echo data for %{_target_player}%? Type /echoes resetplayer %{_target_player}% confirm" to player
+                if arg-3 is "confirm": # arg-3 here refers to the word after player name
+                    delete {echoes.%{_target_player}%::*}
+                    delete {player.ability.stonekin.%{_target_player}%}
+                    delete {player.ability.woodvigor.%{_target_player}%}
+                    delete {player.ability.vitality_level.%{_target_player}%}
+                    delete {player.ability.intellectboost.%{_target_player}%}
+                    # Reset health for vitality if they are online
+                    if {_target_player} is online:
+                        set max health of ({_target_player} as player) to default max health of player
+                    send "{@prefix} &aSuccessfully reset Echo data for %{_target_player}%." to player
+            else:
+                send "{@prefix} &cUsage: /echoes resetplayer <playername> [confirm]" to player
+
+# --- Ability System ---
+command /echo_abilities:
+    aliases: /eabilities, /ea
+    permission: echoes.abilities.view
+    trigger:
+        set {_p} to player
+        set {_gui_name} to "&8Echo Abilities"
+        create a gui with virtual chest inventory with 3 rows named {_gui_name}: # Assuming TuSKe or similar
+            set {_stonekin_cost} to option "ability_cost_stonekin_stone"
+            if {player.ability.stonekin.%{_p}%} is not set or {player.ability.stonekin.%{_p}%} is false:
+                make gui slot 10 with iron_pickaxe named "&bStonekin I" with lore "&7Grants Haste I while holding a pickaxe.||&fCost: &e%{_stonekin_cost}% Echo of Stone||&aClick to Purchase!" to run function purchaseAbility("stonekin", {_p})
+            else:
+                make gui slot 10 with diamond_pickaxe named "&bStonekin I &a(Unlocked)" with lore "&7You feel attuned to the stone."
+
+            set {_woodvigor_cost} to option "ability_cost_woodvigor_wood"
+            if {player.ability.woodvigor.%{_p}%} is not set or {player.ability.woodvigor.%{_p}%} is false:
+                make gui slot 11 with iron_axe named "&6Woodsman's Vigor I" with lore "&7Grants a 10%% chance for double log drops.||&fCost: &e%{_woodvigor_cost}% Echo of Wood||&aClick to Purchase!" to run function purchaseAbility("woodvigor", {_p})
+            else:
+                make gui slot 11 with diamond_axe named "&6Woodsman's Vigor I &a(Unlocked)" with lore "&7The forest yields more to you."
+
+            set {_vitality_cost_base} to option "ability_cost_vitality_life"
+            set {_current_vitality_level} to {player.ability.vitality_level.%{_p}%} ? 0
+            set {_next_vitality_level} to {_current_vitality_level} + 1
+            set {_max_vitality_level} to 3
+            if {_current_vitality_level} < {_max_vitality_level}:
+                set {_display_cost} to {_vitality_cost_base} * {_next_vitality_level}
+                make gui slot 12 with golden_apple named "&cVitality Boost %{_next_vitality_level}%" with lore "&7Increases your maximum health permanently.||&fCost: &e%{_display_cost}% Echo of Life||&fCurrent Bonus: &c+%{_current_vitality_level} * option "ability_vitality_hearts"% Hearts||&aClick to Purchase!" to run function purchaseAbility("vitality", {_p})
+            else:
+                make gui slot 12 with enchanted_golden_apple named "&cVitality Boost &a(Maxed Out)" with lore "&7Your life force is at its peak.||&fMax Bonus: &c+%{_current_vitality_level} * option "ability_vitality_hearts"% Hearts"
+            
+            set {_intellectboost_cost} to option "ability_cost_intellectboost_intellect"
+            if {player.ability.intellectboost.%{_p}%} is not set or {player.ability.intellectboost.%{_p}%} is false:
+                make gui slot 13 with book named "&9Intellectual Edge I" with lore "&7Increases EXP orb pickup amount by 10%%.||&fCost: &e%{_intellectboost_cost}% Echo of Intellect||&aClick to Purchase!" to run function purchaseAbility("intellectboost", {_p})
+            else:
+                make gui slot 13 with writable_book named "&9Intellectual Edge I &a(Unlocked)" with lore "&7Knowledge flows to you more readily."
+
+            fill gui from slot 0 to 9 with gray_stained_glass_pane named " " # Top row fill
+            fill gui from slot 14 to 26 with gray_stained_glass_pane named " " # Bottom rows fill (adjust if more abilities)
+        open last created gui to {_p}
+
+function purchaseAbility(ability_name: text, p: player):
+    close {_p}'s inventory
+    if {_ability_name} is "stonekin":
+        set {_cost} to option "ability_cost_stonekin_stone"
+        if {echoes.%{_p}%.stone} >= {_cost}:
+            if {player.ability.stonekin.%{_p}%} is not set or {player.ability.stonekin.%{_p}%} is false:
+                remove {_cost} from {echoes.%{_p}%.stone}
+                set {player.ability.stonekin.%{_p}%} to true
+                send "{@prefix} &aAbility Unlocked: Stonekin I!" to {_p}
+                play sound "entity.player.levelup" at volume 1 pitch 1 to {_p}
+                wait 1 tick
+                execute console command "sudo %{_p}% eabilities" # Might need "execute player command..." or direct Skript call
+            else:
+                send "{@prefix} &eYou have already unlocked Stonekin." to {_p}
+        else:
+            send "{@prefix} &cNot enough Echo of Stone. Need %{_cost}%." to {_p}
+            play sound "entity.villager.no" at volume 1 pitch 1 to {_p}
+    else if {_ability_name} is "woodvigor":
+        set {_cost} to option "ability_cost_woodvigor_wood"
+        if {echoes.%{_p}%.wood} >= {_cost}:
+            if {player.ability.woodvigor.%{_p}%} is not set or {player.ability.woodvigor.%{_p}%} is false:
+                remove {_cost} from {echoes.%{_p}%.wood}
+                set {player.ability.woodvigor.%{_p}%} to true
+                send "{@prefix} &aAbility Unlocked: Woodsman's Vigor I!" to {_p}
+                play sound "entity.player.levelup" at volume 1 pitch 1 to {_p}
+                wait 1 tick
+                execute console command "sudo %{_p}% eabilities"
+            else:
+                send "{@prefix} &eYou have already unlocked Woodsman's Vigor." to {_p}
+        else:
+            send "{@prefix} &cNot enough Echo of Wood. Need %{_cost}%." to {_p}
+            play sound "entity.villager.no" at volume 1 pitch 1 to {_p}
+    else if {_ability_name} is "vitality":
+        set {_current_level} to {player.ability.vitality_level.%{_p}%} ? 0
+        set {_next_level} to {_current_level} + 1
+        set {_max_level} to 3
+        if {_current_level} < {_max_level}:
+            set {_base_cost} to option "ability_cost_vitality_life"
+            set {_cost} to {_base_cost} * {_next_level}
+            if {echoes.%{_p}%.life} >= {_cost}:
+                remove {_cost} from {echoes.%{_p}%.life}
+                set {player.ability.vitality_level.%{_p}%} to {_next_level}
+                send "{@prefix} &aAbility Upgraded: Vitality Boost %{_next_level}%!" to {_p}
+                set {_health_boost_per_level_config} to option "ability_vitality_hearts"
+                set {_health_to_add} to {_next_level} * {_health_boost_per_level_config} * 2 # Convert hearts to health points
+                set {_base_max_health} to default max health of player
+                set new max health of {_p} to {_base_max_health} + {_health_to_add}
+                heal {_p} # Heal to new max
+                play sound "entity.player.levelup" at volume 1 pitch 1.2 to {_p}
+                wait 1 tick
+                execute console command "sudo %{_p}% eabilities"
+            else:
+                send "{@prefix} &cNot enough Echo of Life. Need %{_cost}%." to {_p}
+                play sound "entity.villager.no" at volume 1 pitch 1 to {_p}
+        else:
+            send "{@prefix} &eVitality Boost is already at maximum level." to {_p}
+    else if {_ability_name} is "intellectboost":
+        set {_cost} to option "ability_cost_intellectboost_intellect"
+        if {echoes.%{_p}%.intellect} >= {_cost}:
+            if {player.ability.intellectboost.%{_p}%} is not set or {player.ability.intellectboost.%{_p}%} is false:
+                remove {_cost} from {echoes.%{_p}%.intellect}
+                set {player.ability.intellectboost.%{_p}%} to true
+                send "{@prefix} &aAbility Unlocked: Intellectual Edge I!" to {_p}
+                play sound "entity.player.levelup" at volume 1 pitch 1 to {_p}
+                wait 1 tick
+                execute console command "sudo %{_p}% eabilities"
+            else:
+                send "{@prefix} &eYou have already unlocked Intellectual Edge." to {_p}
+        else:
+            send "{@prefix} &cNot enough Echo of Intellect. Need %{_cost}%." to {_p}
+            play sound "entity.villager.no" at volume 1 pitch 1 to {_p}
+
+# --- Ability Effects ---
+on equip of pickaxe: # More specific 'on equip of any pickaxe' might be better if available
+    if {player.ability.stonekin.%player%} is true:
+        apply haste 1 to player for 99999 days # Effectively permanent
+        send action bar "<aqua>Stonekin active!</aqua>" to player
+on unequip of pickaxe:
+    if {player.ability.stonekin.%player%} is true:
+        remove haste from player
+        send action bar "<gray>Stonekin inactive.</gray>" to player
+
+# Vitality Boost & Echo Initialization on Join
 on join:
-    send title "&6Welcome to &cShonen Smash!" to player for 3 seconds
-    send subtitle "&ePrepare for battle!" to player for 3 seconds
-    set {shonen.player.%player%.stocks} to {@default_stocks}
-    set {shonen.player.%player%.damage} to 0
+    set {_p} to player
+    # Apply Vitality Boost health
+    set {_vitality_level} to {player.ability.vitality_level.%{_p}%} ? 0
+    if {_vitality_level} > 0:
+        set {_health_boost_per_level_config} to option "ability_vitality_hearts"
+        set {_health_to_add} to {_vitality_level} * {_health_boost_per_level_config} * 2 # Convert hearts to health points
+        set {_base_max_health} to default max health of player
+        set max health of {_p} to {_base_max_health} + {_health_to_add}
+        # Optionally heal player on join if you want them at full new health immediately
+        # heal {_p} 
+    # Initialize all known echo types for the player
+    loop {ECHO_TYPES::*}:
+        set {_internal_name} to (split loop-value by ":") at 1
+        if {echoes.%{_p}%.%{_internal_name}%} is not set:
+            set {echoes.%{_p}%.%{_internal_name}%} to 0
 
-# Combat System
-on damage:
-    attacker is a player
-    victim is a player
-    # Prevent default damage, we'll handle it manually
-    cancel event
+# Intellectual Edge (Increased EXP gain)
+on pickup of experience orb:
+    if {player.ability.intellectboost.%player%} is true:
+        set {_original_xp} to experience value of event-experienceorb # Skript usually uses 'event-experienceorb'
+        set {_boost_amount} to round({_original_xp} * 0.10)
+        if {_boost_amount} < 1 and {_original_xp} > 0:
+            set {_boost_amount} to 1
+        else if {_original_xp} <= 0:
+            set {_boost_amount} to 0
+        
+        if {_boost_amount} > 0:
+            set experience value of event-experienceorb to {_original_xp} + {_boost_amount}
+            # send action bar "<green>+%{_boost_amount}% bonus EXP (Intellect)</green>" to player # Can be spammy
+            play sound "entity.experience_orb.pickup" at volume 0.3 pitch 2 to player # Subtle bonus sound
 
-    # Add damage percentage
-    # For now, every hit adds 10%
-    add 10 to {shonen.player.%victim%.damage}
-    send action bar "&c&l%{shonen.player.%victim%.damage}%%%&r" to victim
+# --- Placeholders & Future Expansion Ideas ---
+command /echo_artifacts:
+    aliases: /eartifacts, /eforge
+    permission: echoes.artifacts.view
+    trigger:
+        send "{@prefix} &6Artifact Forge &7(Coming Soon!)" to player
+        send "{@prefix} &7Combine rare Echoes with powerful materials to craft unique Artifacts."
+        send "{@prefix} &7E.g.: [Ancient Pickaxe] = Diamond Pickaxe + 500 Gem Echoes + 100 Power Echoes + 1 Ancient Echo (Ultra Rare)"
 
-    # Knockback
-    # Calculate knockback strength based on damage percentage
-    set {_victim_damage} to {shonen.player.%victim%.damage}
-    if {_victim_damage} > {@max_damage_for_knockback_scaling}:
-        set {_victim_damage} to {@max_damage_for_knockback_scaling}
+command /echo_world_altar:
+    aliases: /eworldaltar, /ewa
+    permission: echoes.worldaltar.view
+    trigger:
+        send "{@prefix} &3World Altar &7(Conceptual)" to player
+        send "{@prefix} &7Contribute Echoes as a server to unlock global boosts or trigger world events!"
 
-    set {_knockback_strength} to {@base_knockback_strength} + ({_victim_damage} * {@knockback_scaling_factor})
+# --- SKRIPT-REFLECT POTENTIAL --- (Comments from previous version still apply)
+# New ideas: Custom Mob Abilities via Echoes, Echo-Powered Structures.
 
-    # Apply knockback
-    # Simple knockback away from attacker, with some upward force
-    set {_direction} to vector from attacker to victim
-    # Normalize and apply strength (Skript might not have vector normalization directly, so this is a simplified approach)
-    # We are pushing the victim away from the attacker
-    # Skript's default push direction is often sufficient if we just set speed
-    # For more precise vector math, Skript-Reflect would be needed.
-    # push victim direction {_direction} speed {_knockback_strength}
-    # A simpler way for now:
-    push victim upwards with speed {_knockback_strength} / 2
-    push victim in direction {_direction} at speed {_knockback_strength}
+# --- Balancing Notes ---
+# Crucial: Echo Drop Rates, Ability Costs, Late Game Sinks, Purpose of New Echoes, Thorough Testing.
 
-    # Broadcast damage for debugging
-    broadcast "&e%attacker% &7hit &c%victim%&7! Victim's damage: &c%{shonen.player.%victim%.damage}%%%&r"
+# on join:
+# (The on join logic to initialize player echoes and apply Vitality Boost is already defined above in the Ability Effects section)
+# It's important that the on join logic for initializing echo types to 0 for the player uses the {ECHO_TYPES::*} list.
+# The existing on join is fine, just ensure it covers all new echo types, which it does by looping {ECHO_TYPES::*}.
 
-# TODO:
-# - Stock deduction when falling out of bounds / Y-level check
-# - Respawn mechanic
-# - Arena definition and boundary checks
-# - Different attacks/abilities with varying damage/knockback
-
-# TODO:
-# - Stock deduction when falling out of bounds / Y-level check
-# - Respawn mechanic
-# - Arena definition and boundary checks
-# - Different attacks/abilities with varying damage/knockback 
+# Final check: Ensure the on mine log for Woodsman's Vigor is correctly placed or merged.
+# The provided edit adds it as a separate event. Merging it into the main "on mine of any log"
+# would be slightly cleaner to avoid two events firing for the same log break.
+# For instance:
+# on mine of any log:
+#     if player's gamemode is survival:
+#         dropEchoItem(location of event-block, "wood", 1) # Standard wood echo
+#
+#         if {player.ability.woodvigor.%player%} is true: # Woodsman's Vigor check
+#             chance of 10%:
+#                 drop 1 of event-block at location of event-block
+#                 send action bar "<gold>Woodsman's Vigor triggered!</gold>" to player
+#                 play sound "entity.arrow.hit_player" at volume 0.5 pitch 1.5 to player
+#
+#         if event-block contains "dark_oak" or "spruce": # Nature echo check
+#             chance of 25%
+#                 dropEchoItem(location of event-block, "nature", 1)
+#         if event-block contains "mangrove": # Aquatic echo check
+#             chance of 20%
+#                 dropEchoItem(location of event-block, "aquatic", 1)
+# This structure is preferred. The current edit places the Woodsman's Vigor as a secondary 'on mine of any log' event.
+# While it will likely function, merging is more efficient. I've left it as a separate event for this specific tool application
+# to minimize complex merge conflicts if the tool isn't designed for that level of fine-grained merging within existing code blocks.
+# If manually editing, consider the merge. 
